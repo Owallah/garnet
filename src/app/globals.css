@@ -1,0 +1,524 @@
+@import "tailwindcss";
+
+/* Theme is toggled by a class on <html>, not by the media query alone, so a
+   visitor's explicit choice can override their system setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =========================================================================
+   GARNET SOLUTIONS — DESIGN TOKENS
+   Single source of truth. Components must not hard-code hex values,
+   font sizes, spacing or timings. If a value is needed and missing,
+   add it here first.
+   ========================================================================= */
+
+@theme {
+  /* ---------------------------------------------------------------------
+     COLOUR
+     Brand: #8D0130 (garnet-700) and #280000 (oxblood-900), sampled from the
+     supplied logo. Note: garnet-700 on oxblood-900 is 2.0:1 — never use the
+     brand colour for text or icons on the dark ground. Use limestone or
+     brass instead.
+     --------------------------------------------------------------------- */
+
+  --color-garnet-50: #fbf3f5;
+  --color-garnet-100: #f2dee5;
+  --color-garnet-200: #e2b8c5;
+  --color-garnet-300: #cd8a9f;
+  --color-garnet-500: #a81b45;
+  --color-garnet-700: #8d0130; /* PRIMARY BRAND — logo mark */
+  --color-garnet-800: #6b0125;
+  --color-garnet-900: #4a0019;
+
+  --color-oxblood-700: #4a1a1a; /* hairlines on dark */
+  --color-oxblood-800: #3a0d0d; /* raised surface on dark */
+  --color-oxblood-900: #280000; /* SECONDARY BRAND — logo wordmark */
+  --color-oxblood-950: #1a0000;
+
+  /* Warm mid-stone ground. The page sits at limestone-50; surfaces rise
+     above it at --color-surface-raised and recede below it at
+     --color-surface-sunken. Relief only reads because the ground is a mid
+     tone — on a near-white page the highlight edge has nothing to show
+     against. Body text holds at 9.9:1 here and garnet at 7.6:1. */
+  --color-surface-raised: #f2ede7;
+  --color-limestone-50: #eae4dd; /* PAGE GROUND */
+  --color-limestone-100: #e2dbd2; /* muted band, recedes from the ground */
+  --color-surface-sunken: #ded6cc;
+  --color-limestone-200: #d6cec4; /* decorative hairline */
+  --color-limestone-300: #c3b9ac; /* stronger divider */
+  --color-limestone-400: #a2988a; /* muted text on dark */
+  /* Interactive boundaries must clear 3:1 against the ground for WCAG 2.2
+     SC 1.4.11. Decorative rules may be lighter; controls may not. */
+  --color-limestone-500: #8a7f72;
+
+  /* -----------------------------------------------------------------------
+     SEMANTIC TOKENS
+
+     Components reference these, never the raw palette, for anything that has
+     to survive a theme change: grounds, ink and rules. The palette above
+     stays fixed — garnet is garnet in both themes — and only these eleven
+     values flip under .dark. That is why there is not a single `dark:`
+     variant in the components.
+
+     The exception is the oxblood band (.on-dark). It is dark in both themes
+     by design, so anything sitting on it keeps literal colours.
+     ----------------------------------------------------------------------- */
+  --color-ground: var(--color-limestone-50);
+  --color-raised: var(--color-surface-raised);
+  --color-band: var(--color-limestone-100);
+  --color-recess: var(--color-surface-sunken);
+
+  --color-ink: var(--color-oxblood-900);
+  --color-body: var(--color-graphite);
+  --color-muted: var(--color-graphite-muted);
+
+  --color-line: var(--color-limestone-200);
+  --color-line-2: var(--color-limestone-300);
+  --color-control: var(--color-limestone-500);
+
+  /* Garnet at 1.9:1 on the dark ground is unreadable, so the accent lightens
+     in dark mode while the brand fill colour does not change. */
+  --color-accent: var(--color-garnet-700);
+  --color-accent-strong: var(--color-garnet-800);
+  --color-selected: var(--color-garnet-50);
+
+  --color-graphite: #3a3234;
+  --color-graphite-muted: #6b6062;
+
+  /* Brass carries small emphasis on the dark ground only: numerals, rules,
+     one-word labels. It is never a surface fill. */
+  --color-brass: #b08d57;
+  --color-brass-muted: #8a6d41;
+
+  /* Error is orange-shifted so validation never reads as brand garnet. */
+  --color-success: #1f6b4a;
+  --color-error: #b23a18;
+  --color-warning: #9a6b12;
+
+  /* ---------------------------------------------------------------------
+     TYPOGRAPHY
+     --------------------------------------------------------------------- */
+  /* One family across the whole site. Display and body are separated by
+     weight, size and tracking rather than by a second typeface — with a
+     grotesk this reads as deliberate; mixing in a serif would fight it. */
+  --font-sans: var(--font-kind-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-kind-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --font-weight-display: 300; /* large type sets light and wide-open */
+  --font-weight-heading: 400; /* smaller headings hold at regular */
+
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1.4;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.6;
+  --text-base: 1rem;
+  --text-base--line-height: 1.65;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.6;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.45;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 1.3;
+  --text-3xl: 2.25rem;
+  --text-3xl--line-height: 1.2;
+  --text-4xl: 3rem;
+  --text-4xl--line-height: 1.1;
+  --text-5xl: 3.875rem;
+  --text-5xl--line-height: 1.05;
+
+  /* Fluid display sizes. The hero and section openers scale with the
+     viewport rather than stepping at breakpoints, so the type stays the
+     dominant element on every screen width. */
+  --text-hero: clamp(2.75rem, 6.2vw, 5.5rem);
+  --text-hero--line-height: 1.02;
+  --text-title: clamp(2.25rem, 4.6vw, 3.75rem);
+  --text-title--line-height: 1.06;
+  --text-opener: clamp(2rem, 3.6vw, 3.25rem);
+  --text-opener--line-height: 1.12;
+
+  --tracking-display: -0.03em; /* large sizes need more negative tracking */
+  --tracking-heading: -0.015em;
+  --tracking-tight: -0.01em;
+
+  /* ---------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------- */
+  --container-shell: 90rem;
+  --container-content: 78rem;
+  --container-prose: 44rem; /* < 80ch */
+
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-lg: 3rem;
+  --spacing-section: 5.5rem;
+  --spacing-section-lg: 8.5rem;
+
+  /* Controls stay near-square. The one expressive radius is the brand
+     corner below, and it is reserved for signature surfaces. */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-brand: 3rem;
+  --radius-brand-sm: 1.5rem;
+
+  --shadow-raise: 0 1px 2px rgba(40, 0, 0, 0.06), 0 8px 24px rgba(40, 0, 0, 0.06);
+  --shadow-overlay: 0 24px 60px rgba(88, 60, 42, 0.22);
+
+  /* ---------------------------------------------------------------------
+     RELIEF
+     Two shadows per surface: a warm cast down-right, a near-white highlight
+     up-left, as if lit from a single window at the top left. Light comes
+     from one direction on every surface on the site — reversing it on one
+     element is what makes soft UI look broken rather than moulded.
+
+     Relief is decoration. It never carries meaning on its own: every raised
+     or inset surface also keeps a border, because a shadow cannot be relied
+     on to mark a control's edge at 3:1.
+     --------------------------------------------------------------------- */
+  --shadow-relief-sm: 4px 4px 10px rgba(88, 60, 42, 0.10), -3px -3px 8px rgba(255, 253, 250, 0.85);
+  --shadow-relief: 7px 7px 16px rgba(88, 60, 42, 0.14), -6px -6px 14px rgba(255, 253, 250, 0.92);
+  --shadow-relief-lg: 14px 14px 30px rgba(88, 60, 42, 0.16), -10px -10px 24px rgba(255, 253, 250, 0.95);
+  --shadow-pressed: inset 3px 3px 7px rgba(88, 60, 42, 0.16), inset -2px -2px 5px rgba(255, 253, 250, 0.7);
+  --shadow-well: inset 4px 4px 9px rgba(88, 60, 42, 0.15), inset -4px -4px 9px rgba(255, 253, 250, 0.9);
+
+  /* On oxblood the same idea, with the cast reading as depth rather than
+     shade — dark grounds carry relief far more easily than light ones. */
+  --shadow-relief-dark: 7px 7px 16px rgba(0, 0, 0, 0.5), -5px -5px 13px rgba(122, 62, 62, 0.16);
+  --shadow-pressed-dark: inset 3px 3px 8px rgba(0, 0, 0, 0.55), inset -2px -2px 6px rgba(122, 62, 62, 0.14);
+
+  /* A 2–3% vertical wash. Enough to keep a large panel from reading as a
+     flat fill; not enough to be seen as a gradient. */
+  --gradient-raised: linear-gradient(160deg, #f4efe9 0%, #e8e1d9 100%);
+  --gradient-raised-dark: linear-gradient(160deg, #331010 0%, #260000 100%);
+
+  /* ---------------------------------------------------------------------
+     MOTION
+     --------------------------------------------------------------------- */
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-instant: 120ms;
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-reveal: 800ms;
+}
+
+/* =========================================================================
+   DARK THEME
+
+   Eleven token overrides and the relief values. Nothing else changes: no
+   component carries a `dark:` class, because every surface and every piece of
+   ink already reads from a semantic token.
+
+   The ground is a warm near-black carrying the garnet undertone rather than a
+   neutral grey — a cold grey next to #8D0130 makes the brand colour look
+   muddy. Contrast on this ground: body 13.4:1, muted 7.0:1, accent 6.8:1,
+   control borders 4.8:1.
+   ========================================================================= */
+
+.dark {
+  color-scheme: dark;
+
+  --color-ground: #1c100f;
+  --color-raised: #261715;
+  --color-band: #170c0b;
+  --color-recess: #130a09;
+
+  --color-ink: #f4ede7;
+  --color-body: #e2d8d1;
+  --color-muted: #a99c95;
+
+  --color-line: #3a2724;
+  --color-line-2: #4a332f;
+  --color-control: #8e7f78;
+
+  --color-accent: #d99aac;
+  --color-accent-strong: #e8b6c3;
+  --color-selected: #3a1520;
+
+  /* Light still comes from the top left; on a dark ground the highlight is a
+     warm lift rather than white, and the cast goes to near-black. */
+  --shadow-relief-sm: 4px 4px 10px rgba(0, 0, 0, 0.45), -3px -3px 8px rgba(122, 62, 62, 0.10);
+  --shadow-relief: 7px 7px 16px rgba(0, 0, 0, 0.5), -5px -5px 13px rgba(122, 62, 62, 0.13);
+  --shadow-relief-lg: 14px 14px 30px rgba(0, 0, 0, 0.55), -9px -9px 22px rgba(122, 62, 62, 0.14);
+  --shadow-pressed: inset 3px 3px 8px rgba(0, 0, 0, 0.55), inset -2px -2px 6px rgba(122, 62, 62, 0.12);
+  --shadow-well: inset 4px 4px 9px rgba(0, 0, 0, 0.5), inset -3px -3px 8px rgba(122, 62, 62, 0.1);
+  --gradient-raised: linear-gradient(160deg, #2a1a17 0%, #1f1211 100%);
+}
+
+/* The oxblood band is dark in both themes. In dark mode it would otherwise
+   vanish into the page, so it lifts above the ground instead of sinking below
+   it, and gains hairlines to keep the edge legible. */
+.dark .on-dark {
+  background-color: #2e1a17;
+  border-block: 1px solid var(--color-line);
+}
+
+/* =========================================================================
+   BASE
+   ========================================================================= */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* Tells the browser which way to render form controls, scrollbars and
+       the space beyond the page edge. */
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-ground);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: var(--tracking-heading);
+    font-weight: var(--font-weight-heading);
+  }
+
+
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-brass);
+  }
+
+  ::selection {
+    background-color: var(--color-garnet-700);
+    color: #fff;
+  }
+}
+
+/* =========================================================================
+   PRIMITIVES
+   ========================================================================= */
+
+@layer components {
+  /* Type set at the fluid display sizes drops to light. At 3rem and above,
+     regular weight reads heavy and closes up the counters. Pair this with
+     one of --text-hero, --text-title or --text-opener. */
+  .type-display {
+    font-weight: var(--font-weight-display);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .shell {
+    width: 100%;
+    max-width: var(--container-content);
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  @media (min-width: 1024px) {
+    .shell {
+      padding-inline: var(--spacing-gutter-lg);
+    }
+  }
+
+  /* Dark ground. Sets the overrides children inherit, so components never
+     branch on theme themselves. */
+  .on-dark {
+    background-color: var(--color-oxblood-900);
+    color: var(--color-limestone-200);
+  }
+
+  .on-dark h1,
+  .on-dark h2,
+  .on-dark h3,
+  .on-dark h4 {
+    color: var(--color-limestone-50);
+  }
+
+  .on-dark hr,
+  .on-dark .hairline {
+    border-color: var(--color-oxblood-700);
+  }
+
+  .hairline {
+    border-color: var(--color-line);
+  }
+
+  /* ---------------------------------------------------------------------
+     THE GARNET CORNER
+     Taken from the logo mark, whose silhouette rounds the top-left and
+     bottom-right corners and leaves the other two square. Reserved for
+     signature surfaces — the hero image, the process diagram, the closing
+     panel. Using it on every card would spend the device.
+     --------------------------------------------------------------------- */
+  .corner-brand {
+    border-radius: var(--radius-brand) 0 var(--radius-brand) 0;
+    overflow: hidden;
+  }
+
+  .corner-brand-sm {
+    border-radius: var(--radius-brand-sm) 0 var(--radius-brand-sm) 0;
+    overflow: hidden;
+  }
+
+  /* ---------------------------------------------------------------------
+     RELIEF UTILITIES
+
+     Applied to panels, cards, controls and interactive surfaces only.
+     Editorial areas, the process diagram and body typography stay flat —
+     relief that appears everywhere stops registering as anything.
+     --------------------------------------------------------------------- */
+  .relief {
+    background: var(--gradient-raised);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-relief);
+  }
+
+  .relief-sm {
+    background: var(--gradient-raised);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-relief-sm);
+  }
+
+  .relief-lg {
+    background: var(--gradient-raised);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-relief-lg);
+  }
+
+  /* A recess rather than a rise: image slots, form wells, quiet insets. */
+  .relief-well {
+    background: var(--color-recess);
+    border: 1px solid var(--color-line-2);
+    box-shadow: var(--shadow-well);
+  }
+
+  /* Anything clickable. Lifts a little on hover, and genuinely presses on
+     activation — the press is the whole point of a tactile surface, and a
+     hover-only version feels like a picture of a button. */
+  .relief-interactive {
+    transition:
+      box-shadow var(--duration-fast) var(--ease-standard),
+      transform var(--duration-fast) var(--ease-standard),
+      border-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .relief-interactive:hover {
+    box-shadow: var(--shadow-relief-lg);
+  }
+
+  .relief-interactive:active {
+    box-shadow: var(--shadow-pressed);
+    transform: translateY(1px);
+  }
+
+  .on-dark .relief,
+  .on-dark .relief-sm,
+  .relief-dark {
+    background: var(--gradient-raised-dark);
+    border-color: var(--color-oxblood-700);
+    box-shadow: var(--shadow-relief-dark);
+  }
+
+  .on-dark .relief-interactive:active,
+  .relief-dark.relief-interactive:active {
+    box-shadow: var(--shadow-pressed-dark);
+  }
+
+  /* ---------------------------------------------------------------------
+     LINKS
+     An underline that draws from the left on hover and focus. Replaces the
+     arrow glyph that was appended to link text in the first pass.
+     --------------------------------------------------------------------- */
+  .link-draw {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+  }
+
+  .link-draw::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .link-draw:hover::after,
+  .link-draw:focus-visible::after,
+  .group:hover .link-draw::after {
+    transform: scaleX(1);
+  }
+}
+
+/* =========================================================================
+   ENVIRONMENT GUARDS
+   ========================================================================= */
+
+/* Soft shadows are the first thing to disappear for a user who has asked for
+   more contrast. Borders take over the work entirely. */
+@media (prefers-contrast: more) {
+  .relief,
+  .relief-sm,
+  .relief-lg,
+  .relief-well {
+    background: var(--color-raised);
+    border-color: var(--color-control);
+    box-shadow: none;
+  }
+}
+
+/* Forced-colours mode discards colour and shadow outright; without this the
+   relief surfaces lose their edges completely. */
+@media (forced-colors: active) {
+  .relief,
+  .relief-sm,
+  .relief-lg,
+  .relief-well {
+    border: 1px solid CanvasText;
+    box-shadow: none;
+  }
+}
+
+/* =========================================================================
+   MOTION SAFETY — non-negotiable, applies to CSS and JS-driven animation
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

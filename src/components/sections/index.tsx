@@ -1,0 +1,9 @@
+export { HomeHero } from "./home-hero";
+export { TrustStrip } from "./trust-strip";
+export { Ecosystem } from "./ecosystem";
+export { Audiences } from "./audiences";
+export { Method } from "./method";
+export { WhyGarnet } from "./why-garnet";
+export { IndustriesRow } from "./industries-row";
+export { Reach } from "./reach";
+export { ClosingCta } from "./closing-cta";
