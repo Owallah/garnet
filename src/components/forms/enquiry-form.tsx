@@ -230,7 +230,7 @@ export function EnquiryForm({ opportunitySlug, opportunityTitle, defaultInterest
       </div>
 
       <div className="sm:col-span-2">
-        <Button type="submit" size="lg" disabled={status === "submitting"}>
+        <Button type="submit" size="lg" loading={status === "submitting"}>
           {status === "submitting" ? "Sending…" : "Send enquiry"}
         </Button>
         <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted">

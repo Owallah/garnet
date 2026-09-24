@@ -27,8 +27,10 @@ export function Reveal({ children, index = 0, className }: RevealProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{
-        duration: 0.7,
-        delay: Math.min(index * 0.07, 0.35),
+        // 700ms with a 350ms stagger meant the last card in a row took over a
+        // second to settle, which reads as lag rather than polish.
+        duration: 0.4,
+        delay: Math.min(index * 0.05, 0.15),
         ease: [0.16, 1, 0.3, 1],
       }}
     >

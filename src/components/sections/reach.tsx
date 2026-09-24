@@ -13,9 +13,9 @@ const widths = ["28%", "62%", "100%"];
 export function Reach() {
   return (
     <Section>
-      <div className="grid items-center gap-14 lg:grid-cols-12">
-        <div className="lg:col-span-6">
-          <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
+      <div className="grid items-center gap-14 md:grid-cols-12">
+        <div className="md:col-span-6">
+          <h2 className="type-section">
             Nairobi outwards
           </h2>
           <p className="mt-6 max-w-lg text-lg text-muted">
@@ -40,7 +40,7 @@ export function Reach() {
           </dl>
         </div>
 
-        <div className="lg:col-span-6">
+        <div className="md:col-span-6">
           <MediaSlot
             slot="home-reach"
             ratio="4/3"

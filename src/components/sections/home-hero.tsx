@@ -20,7 +20,7 @@ export function HomeHero() {
             <div className="lg:col-span-7">
               <HeroRule className="mb-10 w-24" />
 
-              <h1 className="type-display text-(length:--text-hero)/(--text-hero--line-height) text-ink">
+              <h1 className="type-hero text-ink">
                 {headline.map((line) => (
                   <HeroLine key={line}>{line}</HeroLine>
                 ))}

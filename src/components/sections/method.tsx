@@ -20,10 +20,10 @@ const barHeights = ["2.5rem", "3.75rem", "5rem", "6.25rem", "7.5rem"];
 
 export function Method() {
   return (
-    <section className="on-dark py-section lg:py-section-lg">
+    <section className="on-dark py-(--spacing-section) lg:py-(--spacing-section-lg)">
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-12">
-          <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height) lg:col-span-6">
+          <h2 className="type-section lg:col-span-6">
             How a requirement moves through Garnet
           </h2>
           <p className="text-lg text-limestone-300 lg:col-span-5 lg:col-start-8">

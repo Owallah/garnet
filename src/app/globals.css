@@ -286,6 +286,12 @@
     border-color: var(--color-line);
   }
 
+  :root {
+    /* Allows a transition to an intrinsic size, which is what lets the
+       accordion panel animate open. Ignored where unsupported. */
+    interpolate-size: allow-keywords;
+  }
+
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
@@ -349,9 +355,39 @@
   /* Type set at the fluid display sizes drops to light. At 3rem and above,
      regular weight reads heavy and closes up the counters. Pair this with
      one of --text-hero, --text-title or --text-opener. */
-  .type-display {
+  /* ---------------------------------------------------------------------
+     DISPLAY RANKS
+
+     One class per rank, carrying weight, tracking, size and line-height
+     together. A heading cannot now take the size without the weight, which
+     is exactly how two parallel scales appeared: the homepage sections used
+     the fluid scale at Light 300 while interior pages used `text-3xl
+     lg:text-4xl` at Regular 400 for the same rank.
+
+       .type-hero     homepage h1
+       .type-page     interior page h1
+       .type-section  section-opening h2, anywhere
+     --------------------------------------------------------------------- */
+  .type-hero,
+  .type-page,
+  .type-section {
     font-weight: var(--font-weight-display);
     letter-spacing: var(--tracking-display);
+  }
+
+  .type-hero {
+    font-size: var(--text-hero);
+    line-height: var(--text-hero--line-height);
+  }
+
+  .type-page {
+    font-size: var(--text-title);
+    line-height: var(--text-title--line-height);
+  }
+
+  .type-section {
+    font-size: var(--text-opener);
+    line-height: var(--text-opener--line-height);
   }
 
   .shell {
@@ -514,6 +550,61 @@
   }
 
   /* ---------------------------------------------------------------------
+     ACCORDION
+
+     `list-none` alone does not remove the disclosure triangle in Safari, and
+     without a replacement mark an FAQ row reads as a paragraph of body text —
+     26 of them across the FAQ and service pages, none of which looked
+     expandable.
+
+     The panel transition uses ::details-content, which only lands in newer
+     engines. Where it is missing the panel simply appears, exactly as it does
+     today, so this is an enhancement rather than a dependency.
+     --------------------------------------------------------------------- */
+  .accordion > summary {
+    list-style: none;
+  }
+
+  .accordion > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-chevron {
+    transition: transform var(--duration-fast) var(--ease-entrance);
+  }
+
+  .accordion[open] .accordion-chevron {
+    transform: rotate(180deg);
+  }
+
+  @supports selector(::details-content) {
+    .accordion::details-content {
+      block-size: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition:
+        block-size var(--duration-fast) var(--ease-entrance),
+        content-visibility var(--duration-fast) allow-discrete,
+        opacity var(--duration-fast) var(--ease-entrance);
+    }
+
+    .accordion[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     SPINNER
+     Deliberately brisk. A faster spinner makes an identical wait feel
+     shorter, and this one only ever appears on a form the user just
+     submitted.
+     --------------------------------------------------------------------- */
+  .spinner {
+    animation: spinner 600ms linear infinite;
+  }
+
+  /* ---------------------------------------------------------------------
      LINKS
      An underline that draws from the left on hover and focus. Replaces the
      arrow glyph that was appended to link text in the first pass.
@@ -546,6 +637,12 @@
     .group:hover .link-draw::after {
       transform: scaleX(1);
     }
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -609,5 +706,13 @@
     transition-property: color, background-color, border-color, outline-color,
       text-decoration-color, fill, stroke, opacity, box-shadow !important;
     transition-duration: var(--duration-fast) !important;
+  }
+
+  /* One exception. A frozen spinner reads as a hung request; rotation in
+     place is not the kind of movement this setting is protecting against.
+     Slowed rather than stopped. */
+  .spinner {
+    animation-duration: 1.2s !important;
+    animation-iteration-count: infinite !important;
   }
 }

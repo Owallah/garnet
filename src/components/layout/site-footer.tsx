@@ -52,7 +52,7 @@ export function SiteFooter({ settings }: { settings?: SiteSettings | null }) {
   return (
     <footer className="on-dark">
       <div className="shell py-16 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_repeat(3,1fr)]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.2fr_repeat(3,1fr)]">
           <div className="max-w-sm">
             <Image
               src="/logo-garnet-light.png"

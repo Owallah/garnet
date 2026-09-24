@@ -192,7 +192,7 @@ export function ContactForm() {
       </div>
 
       <div className="sm:col-span-2">
-        <Button type="submit" size="lg" disabled={status === "submitting"}>
+        <Button type="submit" size="lg" loading={status === "submitting"}>
           {status === "submitting" ? "Sending…" : "Send message"}
         </Button>
       </div>

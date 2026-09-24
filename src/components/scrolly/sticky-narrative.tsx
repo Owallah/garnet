@@ -61,10 +61,10 @@ export function StickyNarrative({
         className,
       )}
     >
-      <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-32">
-            <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
+      <div className="shell grid gap-12 md:grid-cols-12 md:gap-10 lg:gap-16">
+        <div className="md:col-span-5">
+          <div className="md:sticky md:top-28 lg:top-32">
+            <h2 className="type-section">
               {heading}
             </h2>
             {lede ? (
@@ -76,7 +76,7 @@ export function StickyNarrative({
             {/* Progress. The ascending bars from the logo mark, filling as the
                 reader moves down the column. Decorative — the list beneath
                 carries the same information in text. */}
-            <div aria-hidden className="mt-10 hidden items-end gap-2 lg:flex">
+            <div aria-hidden className="mt-10 hidden items-end gap-2 md:flex">
               {steps.map((step, index) => (
                 <div key={step.title} className="flex-1">
                   <motion.div
@@ -98,7 +98,7 @@ export function StickyNarrative({
             </div>
 
             {/* The active step's name, echoed large in the sticky panel. */}
-            <div aria-hidden className="mt-6 hidden h-8 overflow-hidden lg:block">
+            <div aria-hidden className="mt-6 hidden h-8 overflow-hidden md:block">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.p
                   key={steps[active]?.title}
@@ -116,7 +116,7 @@ export function StickyNarrative({
           </div>
         </div>
 
-        <ol className="lg:col-span-7">
+        <ol className="md:col-span-7">
           {steps.map((step, index) => (
             <li
               key={step.title}

@@ -41,7 +41,7 @@ export function Ecosystem() {
   return (
     <Section>
       <div className="grid gap-8 lg:grid-cols-12">
-        <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height) lg:col-span-7">
+        <h2 className="type-section lg:col-span-7">
           Three capabilities working on the same requirement
         </h2>
         <p className="text-lg text-muted lg:col-span-5">
@@ -51,7 +51,7 @@ export function Ecosystem() {
         </p>
       </div>
 
-      <ul className="mt-16 grid gap-6 lg:grid-cols-3">
+      <ul className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {pillars.map((pillar) => (
           <li
             key={pillar.name}

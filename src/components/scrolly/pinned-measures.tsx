@@ -44,12 +44,12 @@ export function PinnedMeasures({
 
   return (
     <section className={cn(dark && "on-dark")}>
-      <div ref={track} className="relative lg:h-[240vh]">
-        <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center">
-          <div className="shell w-full py-(--spacing-section) lg:py-0">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-5">
-                <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
+      <div ref={track} className="relative md:h-[240vh]">
+        <div className="md:sticky md:top-0 md:flex md:h-dvh md:items-center">
+          <div className="shell w-full py-(--spacing-section) md:py-0">
+            <div className="grid gap-12 md:grid-cols-12 md:gap-10 lg:gap-16">
+              <div className="md:col-span-5">
+                <h2 className="type-section">
                   {heading}
                 </h2>
                 {lede ? (
@@ -64,7 +64,7 @@ export function PinnedMeasures({
                 ) : null}
               </div>
 
-              <dl className="space-y-10 lg:col-span-7">
+              <dl className="space-y-10 md:col-span-7">
                 {measures.map((measure, index) => (
                   <MeasureRow
                     key={measure.title}
@@ -104,7 +104,19 @@ function MeasureRow({
   // after another rather than all at once.
   const start = (index / total) * 0.8;
   const end = start + 0.8 / total;
-  const width = useTransform(progress, [start, end], ["8%", `${measure.width}%`]);
+
+  /**
+   * scaleX rather than width.
+   *
+   * This is the one animation on the site driven directly by scroll position,
+   * so it recalculates on every frame of a continuous gesture. Width is a
+   * layout property: animating it forced layout, paint and composite for the
+   * whole subtree each time. A transform touches none of that.
+   *
+   * The fill is laid out at full width and scaled down from the left, so the
+   * track clips its end rather than the fill needing its own radius.
+   */
+  const scaleX = useTransform(progress, [start, end], [0.08, measure.width / 100]);
 
   return (
     <div>
@@ -112,13 +124,13 @@ function MeasureRow({
       <div
         aria-hidden
         className={cn(
-          "mt-4 h-1.5 rounded-full",
+          "mt-4 h-1.5 overflow-hidden rounded-full",
           dark ? "bg-oxblood-800" : "bg-recess shadow-(--shadow-well)",
         )}
       >
         <motion.div
-          className={cn("h-full rounded-full", dark ? "bg-brass" : "bg-accent")}
-          style={reduced ? { width: `${measure.width}%` } : { width }}
+          className={cn("h-full w-full origin-left", dark ? "bg-brass" : "bg-accent")}
+          style={reduced ? { transform: `scaleX(${measure.width / 100})` } : { scaleX }}
         />
       </div>
       <dd className={cn("mt-4 text-lg", dark ? "text-limestone-300" : "text-muted")}>

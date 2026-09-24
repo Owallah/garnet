@@ -9,12 +9,12 @@ import { differentiators } from "@/content/company";
 export function WhyGarnet() {
   return (
     <Section>
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
-        <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height) lg:col-span-4">
+      <div className="grid gap-12 md:grid-cols-12 md:gap-10 lg:gap-14">
+        <h2 className="type-section md:col-span-4">
           Why clients stay
         </h2>
 
-        <dl className="lg:col-span-8">
+        <dl className="md:col-span-8">
           {differentiators.map((item) => (
             <div
               key={item.title}

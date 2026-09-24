@@ -12,7 +12,7 @@ export function ClosingCta() {
       <div className="shell">
         <div className="corner-brand on-dark bg-(image:--gradient-raised-dark) px-8 py-16 shadow-(--shadow-relief-lg) lg:px-16 lg:py-24">
           <div className="max-w-2xl">
-            <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
+            <h2 className="type-section">
               Tell us what you are trying to finance
             </h2>
             <p className="mt-6 text-lg text-limestone-300">

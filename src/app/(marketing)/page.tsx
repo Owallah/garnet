@@ -1,15 +1,5 @@
+import { Audiences, ClosingCta, Ecosystem, HomeHero, IndustriesRow, Method, Reach, TrustStrip, WhyGarnet } from "@/components/sections";
 import type { Metadata } from "next";
-import {
-  Audiences,
-  ClosingCta,
-  Ecosystem,
-  HomeHero,
-  IndustriesRow,
-  Method,
-  Reach,
-  TrustStrip,
-  WhyGarnet,
-} from "@/components/sections";
 
 export const metadata: Metadata = {
   description:

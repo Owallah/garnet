@@ -21,7 +21,7 @@ export function Section({
   return (
     <Tag
       className={cn(
-        "py-section lg:py-section-lg",
+        "py-(--spacing-section) lg:py-(--spacing-section-lg)",
         tone === "muted" && "bg-band shadow-(--shadow-well)",
         tone === "dark" && "on-dark",
         className,
@@ -51,14 +51,7 @@ export function SectionHeading({ eyebrow, title, lede, level = 2, className }: H
   return (
     <div className={cn("max-w-3xl", className)}>
       {eyebrow ? <p className="mb-4 font-sans text-sm text-accent">{eyebrow}</p> : null}
-      <Tag
-        className={cn(
-          "tracking-display",
-          level === 1
-            ? "text-(length:--text-title)/(--text-title--line-height)"
-            : "text-(length:--text-opener)/(--text-opener--line-height)",
-        )}
-      >
+      <Tag className={level === 1 ? "type-page" : "type-section"}>
         {title}
       </Tag>
       {lede ? <p className="mt-6 max-w-(--container-prose) text-lg text-muted">{lede}</p> : null}

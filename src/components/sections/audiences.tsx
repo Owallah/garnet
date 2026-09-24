@@ -20,7 +20,7 @@ const audienceSlots: Record<string, MediaSlotId> = {
 export function Audiences() {
   return (
     <Section tone="muted">
-      <h2 className="max-w-2xl type-display text-(length:--text-opener)/(--text-opener--line-height)">
+      <h2 className="max-w-2xl type-section">
         Different clients, different first question
       </h2>
 
@@ -29,9 +29,9 @@ export function Audiences() {
           <li key={solution.slug}>
             <Link
               href={`/solutions/${solution.slug}`}
-              className="group grid items-center gap-8 border-t border-line-2 pt-10 lg:grid-cols-12 lg:gap-14"
+              className="group grid items-center gap-8 border-t border-line-2 pt-10 md:grid-cols-12 md:gap-10 lg:gap-14"
             >
-              <div className={cn("lg:col-span-5", index % 2 === 1 && "lg:order-2")}>
+              <div className={cn("md:col-span-5", index % 2 === 1 && "md:order-2")}>
                 <MediaSlot
                   slot={audienceSlots[solution.slug]}
                   ratio={index === 0 ? "3/2" : "4/3"}
@@ -41,7 +41,7 @@ export function Audiences() {
                 />
               </div>
 
-              <div className={cn("lg:col-span-7", index % 2 === 1 && "lg:order-1")}>
+              <div className={cn("md:col-span-7", index % 2 === 1 && "md:order-1")}>
                 <p className="text-sm text-accent">{solution.audienceLabel}</p>
                 <h3 className="mt-3 text-3xl">{solution.title}</h3>
                 <p className="mt-5 max-w-xl text-lg text-muted">{solution.description}</p>

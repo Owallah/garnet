@@ -20,7 +20,7 @@ export function LegalDocumentView({ document }: { document: LegalDocument }) {
     <>
       <Section className="pb-0 lg:pb-0">
         <div className="max-w-3xl">
-          <h1 className="type-display text-(length:--text-title)/(--text-title--line-height)">
+          <h1 className="type-page">
             {document.title}
           </h1>
           {!incomplete ? (

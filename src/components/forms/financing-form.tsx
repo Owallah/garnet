@@ -249,12 +249,35 @@ export function FinancingForm() {
         </div>
 
         <AnimatePresence mode="wait" initial={false}>
+          {/*
+            Asymmetric, and using a full transform string.
+
+            `mode="wait"` serialises exit and enter, so the previous symmetric
+            280ms cost 560ms between pressing Continue and seeing anything —
+            1.7s across a four-step form. The exit is now the fast half,
+            because the user has already decided; the enter is what they are
+            waiting to read.
+
+            `transform` rather than the `x` shorthand: the shorthand runs on
+            the main thread, which is exactly where a form submission is busy.
+          */}
           <motion.div
             key={step}
-            initial={reduced ? false : { opacity: 0, x: 16 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduced ? undefined : { opacity: 0, x: -16 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            initial={reduced ? false : { opacity: 0, transform: "translateX(12px)" }}
+            animate={{
+              opacity: 1,
+              transform: "translateX(0px)",
+              transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
+            }}
+            exit={
+              reduced
+                ? undefined
+                : {
+                    opacity: 0,
+                    transform: "translateX(-12px)",
+                    transition: { duration: 0.12, ease: [0.4, 0, 1, 1] },
+                  }
+            }
             className="mt-8"
           >
             {step === 1 ? (
@@ -512,7 +535,7 @@ export function FinancingForm() {
           {step < 4 ? (
             <Button type="submit">Continue</Button>
           ) : (
-            <Button type="submit" disabled={status === "submitting"}>
+            <Button type="submit" loading={status === "submitting"}>
               {status === "submitting" ? "Sending…" : "Send request"}
             </Button>
           )}

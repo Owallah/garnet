@@ -42,11 +42,54 @@ const buttonVariants = cva(
   },
 );
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants>;
+/**
+ * The in-flight mark.
+ *
+ * Changing the label to "Sending…" is a statement; a moving spinner is
+ * evidence. Both, because the label carries the meaning for a screen reader
+ * and the spinner carries it for everyone glancing at the button.
+ */
+function Spinner() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden className="spinner size-4">
+      <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.25" />
+      <path
+        d="M8 1.5a6.5 6.5 0 0 1 6.5 6.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
-export function Button({ className, variant, size, ...props }: ButtonProps) {
-  return <button className={cn(buttonVariants({ variant, size }), className)} {...props} />;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
+    /** Shows the spinner, disables the button and marks it aria-busy. */
+    loading?: boolean;
+  };
+
+export function Button({
+  className,
+  variant,
+  size,
+  loading,
+  disabled,
+  children,
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      className={cn(buttonVariants({ variant, size }), className)}
+      aria-busy={loading || undefined}
+      disabled={disabled || loading}
+      {...props}
+    >
+      {loading ? <Spinner /> : null}
+      {children}
+    </button>
+  );
 }
 
 type ButtonLinkProps = React.ComponentProps<typeof Link> & VariantProps<typeof buttonVariants>;
