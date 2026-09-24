@@ -4,6 +4,22 @@
    visitor's explicit choice can override their system setting. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Redefines Tailwind's own `hover` variant so every `hover:` utility in the
+   codebase is gated to pointers that can actually hover. On touch, :hover
+   fires on tap and sticks until the next tap elsewhere, which leaves cards
+   lifted and links underlined after the press has finished.
+
+   Done here rather than by renaming 24 class strings: one declaration, and it
+   applies to any hover utility written from now on. `focus-visible:` is
+   untouched, so keyboard users keep everything. */
+@custom-variant hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 /* =========================================================================
    GARNET SOLUTIONS — DESIGN TOKENS
    Single source of truth. Components must not hard-code hex values,
@@ -566,6 +582,14 @@
    MOTION SAFETY — non-negotiable, applies to CSS and JS-driven animation
    ========================================================================= */
 
+/* Reduced motion is a vestibular accommodation, not a request for a static
+   page. Movement goes; the feedback that tells you the interface heard you
+   stays. The previous blanket `transition-duration: 0.01ms` removed colour and
+   opacity transitions too, so these users got *less* state feedback than
+   everyone else — the wrong trade.
+
+   JS-driven motion is handled separately by `useReducedMotion()` in
+   motion/react, which every animated component already checks. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -574,9 +598,16 @@
   *,
   *::before,
   *::after {
+    /* A keyframe animation is movement by definition. */
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+
+    /* Transitions are narrowed rather than switched off: colour, opacity and
+       depth survive, transform and position do not. A transform still applies,
+       it simply arrives without travel. */
+    transition-property: color, background-color, border-color, outline-color,
+      text-decoration-color, fill, stroke, opacity, box-shadow !important;
+    transition-duration: var(--duration-fast) !important;
   }
 }

@@ -133,7 +133,23 @@ export function FinancingForm() {
     focusHeading();
   }
 
-  async function submit() {
+  /**
+   * The form's single submit path. Steps 1–3 advance, step 4 sends.
+   *
+   * Routing both through onSubmit rather than onClick is what makes Enter work
+   * in a text field, which is the most common keyboard expectation in a
+   * multi-step form and the thing its absence is felt for immediately.
+   */
+  function onSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (step < 4) {
+      goNext();
+      return;
+    }
+    void send();
+  }
+
+  async function send() {
     if (!validateStep(4)) return;
 
     const parsed = financingSchema.safeParse(getValues());
@@ -221,7 +237,7 @@ export function FinancingForm() {
         })}
       </ol>
 
-      <div className="mt-10">
+      <form onSubmit={onSubmit} noValidate className="mt-10">
         <h2 ref={headingRef} tabIndex={-1} className="text-2xl outline-none">
           {steps[step - 1].legend}
         </h2>
@@ -494,18 +510,16 @@ export function FinancingForm() {
           ) : null}
 
           {step < 4 ? (
-            <Button type="button" onClick={goNext}>
-              Continue
-            </Button>
+            <Button type="submit">Continue</Button>
           ) : (
-            <Button type="button" onClick={submit} disabled={status === "submitting"}>
+            <Button type="submit" disabled={status === "submitting"}>
               {status === "submitting" ? "Sending…" : "Send request"}
             </Button>
           )}
 
           <p className="text-sm text-muted">Step {step} of 4</p>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
