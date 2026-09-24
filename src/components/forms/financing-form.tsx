@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -66,7 +67,7 @@ export function FinancingForm() {
   const headingRef = React.useRef<HTMLHeadingElement>(null);
   const hasMounted = React.useRef(false);
 
-  const { register, getValues, setValue, watch, setError, clearErrors, reset, formState } =
+  const { register, getValues, watch, setError, clearErrors, reset, formState } =
     useForm<Values>({
       defaultValues: { consent: false, currency: "KES", website: "" },
       shouldFocusError: false,
@@ -199,10 +200,10 @@ export function FinancingForm() {
             <li key={item.number} className="flex-1">
               <div
                 className={cn(
-                  "h-1 rounded-full transition-colors duration-[--duration-base]",
+                  "h-1 rounded-full transition-colors duration-(--duration-base)",
                   state === "upcoming"
                     ? "bg-recess shadow-(--shadow-well)"
-                    : "bg-garnet-700 shadow-(--shadow-relief-sm)",
+                    : "bg-accent shadow-(--shadow-relief-sm)",
                 )}
               />
               <p
@@ -459,9 +460,9 @@ export function FinancingForm() {
                   I agree that Garnet Solutions Limited may use these details to assess and respond
                   to my enquiry, and to share them with financing partners where that is necessary to
                   do so. See the{" "}
-                  <a href="/privacy-policy" className="text-accent underline underline-offset-4">
+                  <Link href="/privacy-policy" className="text-accent underline underline-offset-4">
                     privacy policy
-                  </a>
+                  </Link>
                   .
                 </Checkbox>
                 {errors.consent ? (

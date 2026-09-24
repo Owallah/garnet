@@ -46,7 +46,7 @@ export function PinnedMeasures({
     <section className={cn(dark && "on-dark")}>
       <div ref={track} className="relative lg:h-[240vh]">
         <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center">
-          <div className="shell w-full py-section lg:py-0">
+          <div className="shell w-full py-(--spacing-section) lg:py-0">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-5">
                 <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
@@ -117,7 +117,7 @@ function MeasureRow({
         )}
       >
         <motion.div
-          className={cn("h-full rounded-full", dark ? "bg-brass" : "bg-garnet-700")}
+          className={cn("h-full rounded-full", dark ? "bg-brass" : "bg-accent")}
           style={reduced ? { width: `${measure.width}%` } : { width }}
         />
       </div>

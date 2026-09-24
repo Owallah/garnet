@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Section } from "@/components/shared/section";
 import { hasUnresolvedGaps, type LegalDocument } from "@/content/legal";
 
@@ -32,7 +33,7 @@ export function LegalDocumentView({ document }: { document: LegalDocument }) {
 
       {incomplete && !showGaps ? (
         <Section>
-          <div className="max-w-(--container-prose) border-l-2 border-garnet-700 pl-6">
+          <div className="max-w-(--container-prose) border-l-2 border-accent pl-6">
             <p className="text-lg">
               This document is being finalised with our legal advisers and is not yet published.
             </p>
@@ -40,9 +41,9 @@ export function LegalDocumentView({ document }: { document: LegalDocument }) {
               If you need to know how we handle your information before then, contact us and we will
               tell you directly.
             </p>
-            <a href="/contact" className="link-draw mt-6 inline-block text-accent">
+            <Link href="/contact" className="link-draw mt-6 inline-block text-accent">
               Contact us
-            </a>
+            </Link>
           </div>
         </Section>
       ) : (

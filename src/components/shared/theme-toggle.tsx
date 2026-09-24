@@ -24,6 +24,39 @@ e.classList.toggle('dark',d);
 e.style.colorScheme=d?'dark':'light';
 }catch(e){}})();`;
 
+/* ---------------------------------------------------------------------------
+   A tiny external store for the stored preference.
+
+   Reading localStorage during render is impossible on the server, and the
+   usual workaround — a `mounted` flag set inside an effect — causes a
+   cascading render on every mount. useSyncExternalStore is built for exactly
+   this: the server snapshot is "system", the client snapshot is whatever is in
+   storage, and React reconciles the two without a second render pass.
+
+   Subscribing to the storage event also syncs the toggle across open tabs,
+   which the effect version never did.
+   --------------------------------------------------------------------------- */
+
+const listeners = new Set<() => void>();
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  window.addEventListener("storage", listener);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener("storage", listener);
+  };
+}
+
+function getSnapshot(): Theme {
+  return (localStorage.getItem(STORAGE_KEY) as Theme | null) ?? "system";
+}
+
+/** The server cannot know the preference, so it renders the neutral option. */
+function getServerSnapshot(): Theme {
+  return "system";
+}
+
 function apply(theme: Theme) {
   const dark =
     theme === "dark" ||
@@ -48,14 +81,7 @@ const options: { value: Theme; label: string; Icon: typeof Sun }[] = [
  * one is announced. A row of buttons would need all of that reimplemented.
  */
 export function ThemeToggle({ className }: { className?: string }) {
-  const [theme, setTheme] = React.useState<Theme>("system");
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    if (stored) setTheme(stored);
-  }, []);
+  const theme = React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   // Keep following the system while the choice is "system".
   React.useEffect(() => {
@@ -67,9 +93,9 @@ export function ThemeToggle({ className }: { className?: string }) {
   }, [theme]);
 
   function choose(next: Theme) {
-    setTheme(next);
     localStorage.setItem(STORAGE_KEY, next);
     apply(next);
+    for (const listener of listeners) listener();
   }
 
   return (
@@ -82,9 +108,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       )}
     >
       {options.map(({ value, label, Icon }) => {
-        // Before mount the stored choice is unknown, so nothing is marked
-        // selected — rendering a guess would mismatch the server HTML.
-        const selected = mounted && theme === value;
+        const selected = theme === value;
         return (
           <button
             key={value}
@@ -92,10 +116,10 @@ export function ThemeToggle({ className }: { className?: string }) {
             role="radio"
             aria-checked={selected}
             aria-label={`${label} theme`}
-            tabIndex={selected || (!mounted && value === "system") ? 0 : -1}
+            tabIndex={selected ? 0 : -1}
             onClick={() => choose(value)}
             className={cn(
-              "grid size-8 place-items-center rounded-full transition-colors duration-[--duration-fast]",
+              "grid size-8 place-items-center rounded-full transition-colors duration-(--duration-fast)",
               selected
                 ? "bg-(image:--gradient-raised) text-accent shadow-(--shadow-relief-sm)"
                 : "text-muted hover:text-ink",

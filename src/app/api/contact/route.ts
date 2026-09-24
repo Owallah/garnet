@@ -49,6 +49,7 @@ export async function POST(request: Request) {
     await send({
       to: data.email,
       subject: "We have your message — Garnet Solutions",
+      toName: data.fullName,
       html: acknowledgement({
         firstName: data.fullName.split(" ")[0],
         heading: "Thank you for getting in touch",

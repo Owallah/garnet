@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/shared/section";
 import { industries } from "@/content/industries";
@@ -24,11 +25,11 @@ export default function IndustriesPage() {
         <ul className="grid gap-5 lg:grid-cols-2">
           {industries.map((industry) => (
             <li key={industry.slug} className="relief relief-interactive corner-brand-sm">
-              <a href={`/industries/${industry.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
+              <Link href={`/industries/${industry.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
                 <h2 className="text-2xl">{industry.title}</h2>
                 <p className="mt-4 grow text-muted">{industry.description}</p>
                 <span className="link-draw mt-0 text-sm text-accent">Read more</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

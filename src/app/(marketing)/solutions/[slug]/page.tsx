@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/button";
@@ -103,11 +104,11 @@ export default async function SolutionPage({ params }: Props) {
             if (!service) return null;
             return (
               <li key={serviceSlug} className="relief relief-interactive corner-brand-sm">
-                <a href={`/services/${serviceSlug}`} className="group flex h-full flex-col p-8">
+                <Link href={`/services/${serviceSlug}`} className="group flex h-full flex-col p-8">
                   <h3 className="text-xl">{service.title}</h3>
                   <p className="mt-3 grow text-muted">{service.shortDescription}</p>
                   <span className="link-draw mt-0 text-sm text-accent">Read more</span>
-                </a>
+                </Link>
               </li>
             );
           })}

@@ -28,10 +28,13 @@ export function SiteHeader() {
   const { mobileMenuOpen, setMobileMenuOpen } = useUIStore();
   const [openMenu, setOpenMenu] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
+  // Navigating closes the menus. Handled at the point of the click rather
+  // than in an effect watching the pathname, which triggered a cascading
+  // render on every route change.
+  const closeMenus = React.useCallback(() => {
     setMobileMenuOpen(false);
     setOpenMenu(null);
-  }, [pathname, setMobileMenuOpen]);
+  }, [setMobileMenuOpen]);
 
   React.useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -61,15 +64,7 @@ export function SiteHeader() {
             width={1508}
             height={474}
             priority
-            className="h-8 w-auto dark:hidden lg:h-9"
-          />
-          <Image
-            src="/logo-garnet-light.png"
-            alt="Garnet Solutions"
-            width={1508}
-            height={474}
-            priority
-            className="hidden h-8 w-auto dark:block lg:h-9"
+            className="h-8 w-auto lg:h-9"
           />
         </Link>
 
@@ -89,15 +84,16 @@ export function SiteHeader() {
                     aria-current={active ? "page" : undefined}
                     aria-expanded={link.children ? openMenu === link.label : undefined}
                     onFocus={() => link.children && setOpenMenu(link.label)}
+                    onClick={closeMenus}
                     className={cn(
-                      "relative py-2 text-sm transition-colors duration-[--duration-fast]",
+                      "relative py-2 text-sm transition-colors duration-(--duration-fast)",
                       active ? "text-accent" : "text-body hover:text-ink",
                     )}
                   >
                     {link.label}
                     <span
                       className={cn(
-                        "absolute inset-x-0 -bottom-px h-px origin-left bg-garnet-700 transition-transform duration-[--duration-fast] ease-[--ease-standard]",
+                        "absolute inset-x-0 -bottom-px h-px origin-left bg-accent transition-transform duration-(--duration-fast) ease-(--ease-entrance)",
                         active ? "scale-x-100" : "scale-x-0",
                       )}
                     />
@@ -110,7 +106,8 @@ export function SiteHeader() {
                           <li key={child.href}>
                             <Link
                               href={child.href}
-                              className="block rounded-[--radius-sm] px-3 py-2.5 text-sm text-body transition-colors hover:bg-recess hover:text-ink"
+                              onClick={closeMenus}
+                              className="block rounded-(--radius-sm) px-3 py-2.5 text-sm text-body transition-colors hover:bg-recess hover:text-ink"
                             >
                               {child.label}
                             </Link>
@@ -158,14 +155,14 @@ export function SiteHeader() {
               <ul className="space-y-1">
                 {primaryLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="block py-2.5 text-base text-ink">
+                    <Link href={link.href} onClick={closeMenus} className="block py-2.5 text-base text-ink">
                       {link.label}
                     </Link>
                     {link.children ? (
                       <ul className="mb-2 ml-4 border-l border-line pl-4">
                         {link.children.map((child) => (
                           <li key={child.href}>
-                            <Link href={child.href} className="block py-2 text-sm text-muted">
+                            <Link href={child.href} onClick={closeMenus} className="block py-2 text-sm text-muted">
                               {child.label}
                             </Link>
                           </li>

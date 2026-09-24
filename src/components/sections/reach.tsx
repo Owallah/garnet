@@ -31,7 +31,7 @@ export function Reach() {
                 </div>
                 <div
                   aria-hidden
-                  className="mt-3 h-1 bg-garnet-700"
+                  className="mt-3 h-1 bg-accent"
                   style={{ width: widths[index] }}
                 />
                 <dd className="mt-3 text-sm text-muted">{place.description}</dd>

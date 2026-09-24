@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -174,9 +175,9 @@ export function ContactForm() {
         >
           I agree that Garnet Solutions Limited may use these details to respond to my message. See
           the{" "}
-          <a href="/privacy-policy" className="text-accent underline underline-offset-4">
+          <Link href="/privacy-policy" className="text-accent underline underline-offset-4">
             privacy policy
-          </a>
+          </Link>
           .
         </Checkbox>
         {errors.consent ? (

@@ -18,7 +18,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "About Garnet",
   description:
-    "A Kenyan-registered company incorporated in 2015 and headquartered in Nairobi, providing integrated financing facilitation, proprietary investment and logistics services.",
+    "A Kenyan company operating from Nairobi since 2015, across financing facilitation, proprietary investment and logistics.",
   alternates: { canonical: "/about" },
 };
 

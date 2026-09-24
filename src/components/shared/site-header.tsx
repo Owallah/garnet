@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ButtonLink } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { navigation } from "@/lib/site-config";
 import { useUIStore } from "@/stores/ui.store";
 import { cn } from "@/lib/utils";
@@ -27,10 +28,13 @@ export function SiteHeader() {
   const { mobileMenuOpen, setMobileMenuOpen } = useUIStore();
   const [openMenu, setOpenMenu] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
+  // Navigating closes the menus. Handled at the point of the click rather
+  // than in an effect watching the pathname, which triggered a cascading
+  // render on every route change.
+  const closeMenus = React.useCallback(() => {
     setMobileMenuOpen(false);
     setOpenMenu(null);
-  }, [pathname, setMobileMenuOpen]);
+  }, [setMobileMenuOpen]);
 
   React.useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -44,7 +48,7 @@ export function SiteHeader() {
   }, [setMobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-limestone-200 bg-(image:--gradient-raised) shadow-(--shadow-relief-sm) backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-line bg-(image:--gradient-raised) shadow-(--shadow-relief-sm) backdrop-blur-sm">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-oxblood-900 focus:px-4 focus:py-2 focus:text-limestone-50"
@@ -80,9 +84,10 @@ export function SiteHeader() {
                     aria-current={active ? "page" : undefined}
                     aria-expanded={link.children ? openMenu === link.label : undefined}
                     onFocus={() => link.children && setOpenMenu(link.label)}
+                    onClick={closeMenus}
                     className={cn(
                       "relative py-2 text-sm transition-colors duration-[--duration-fast]",
-                      active ? "text-garnet-700" : "text-graphite hover:text-oxblood-900",
+                      active ? "text-accent" : "text-body hover:text-ink",
                     )}
                   >
                     {link.label}
@@ -101,7 +106,8 @@ export function SiteHeader() {
                           <li key={child.href}>
                             <Link
                               href={child.href}
-                              className="block rounded-[--radius-sm] px-3 py-2.5 text-sm text-graphite transition-colors hover:bg-surface-sunken hover:text-oxblood-900"
+                              onClick={closeMenus}
+                              className="block rounded-[--radius-sm] px-3 py-2.5 text-sm text-body transition-colors hover:bg-recess hover:text-ink"
                             >
                               {child.label}
                             </Link>
@@ -116,7 +122,8 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
+          <ThemeToggle />
           <ButtonLink href="/request-financing" size="sm">
             Request financing
           </ButtonLink>
@@ -142,20 +149,20 @@ export function SiteHeader() {
             animate={{ height: "auto", opacity: 1 }}
             exit={reduced ? undefined : { height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-limestone-200 bg-(image:--gradient-raised) shadow-(--shadow-relief) lg:hidden"
+            className="overflow-hidden border-t border-line bg-(image:--gradient-raised) shadow-(--shadow-relief) lg:hidden"
           >
             <nav aria-label="Primary" className="shell py-6">
               <ul className="space-y-1">
                 {primaryLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="block py-2.5 text-base text-oxblood-900">
+                    <Link href={link.href} onClick={closeMenus} className="block py-2.5 text-base text-ink">
                       {link.label}
                     </Link>
                     {link.children ? (
-                      <ul className="mb-2 ml-4 border-l border-limestone-200 pl-4">
+                      <ul className="mb-2 ml-4 border-l border-line pl-4">
                         {link.children.map((child) => (
                           <li key={child.href}>
-                            <Link href={child.href} className="block py-2 text-sm text-graphite-muted">
+                            <Link href={child.href} onClick={closeMenus} className="block py-2 text-sm text-muted">
                               {child.label}
                             </Link>
                           </li>
@@ -168,6 +175,10 @@ export function SiteHeader() {
               <ButtonLink href="/request-financing" className="mt-4 w-full">
                 Request financing
               </ButtonLink>
+              <div className="mt-6 flex items-center justify-between border-t border-line pt-6">
+                <span className="text-sm text-muted">Theme</span>
+                <ThemeToggle />
+              </div>
             </nav>
           </motion.div>
         ) : null}

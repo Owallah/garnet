@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "That page is not here. Start from the homepage or tell us what you were looking for.",
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

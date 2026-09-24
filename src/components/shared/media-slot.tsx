@@ -81,7 +81,7 @@ export function MediaSlot({
       )}
     >
       <p className="max-w-[42ch] text-sm text-muted">
-        <span className="block text-2xs text-limestone-400">Image slot</span>
+        <span className="block text-2xs text-muted">Image slot</span>
         {direction}
       </p>
     </div>

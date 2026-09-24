@@ -73,10 +73,10 @@ export default async function FaqsPage() {
       <Section className="pt-0 lg:pt-0">
         <div className="grid gap-14 lg:grid-cols-12">
           <nav aria-label="FAQ categories" className="lg:col-span-3">
-            <ul className="sticky top-28 space-y-2 border-l border-line pl-5">
+            <ul className="sticky top-28 space-y-2 border-l border-limestone-200 pl-5">
               {grouped.map((category) => (
                 <li key={category.id}>
-                  <a href={`#${category.id}`} className="text-sm text-muted hover:text-accent">
+                  <a href={`#${category.id}`} className="text-sm text-graphite-muted hover:text-garnet-700">
                     {category.label}
                   </a>
                 </li>
@@ -90,11 +90,11 @@ export default async function FaqsPage() {
                 <h2 className="text-2xl">{category.label}</h2>
                 <div className="mt-6">
                   {category.items.map((faq) => (
-                    <details key={faq.id} className="group border-b border-line py-5">
-                      <summary className="cursor-pointer list-none text-lg text-ink marker:hidden">
+                    <details key={faq.id} className="group border-b border-limestone-200 py-5">
+                      <summary className="cursor-pointer list-none text-lg text-oxblood-900 marker:hidden">
                         {faq.question}
                       </summary>
-                      <div className="mt-4 max-w-(--container-prose) space-y-4 text-muted">
+                      <div className="mt-4 max-w-(--container-prose) space-y-4 text-graphite-muted">
                         {faq.blocks ? (
                           <PortableText value={faq.blocks} />
                         ) : (

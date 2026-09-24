@@ -56,7 +56,7 @@ export function StickyNarrative({
   return (
     <section
       className={cn(
-        "py-section lg:py-section-lg",
+        "py-(--spacing-section) lg:py-(--spacing-section-lg)",
         dark && "on-dark",
         className,
       )}
@@ -82,7 +82,7 @@ export function StickyNarrative({
                   <motion.div
                     className={cn(
                       "origin-bottom rounded-full",
-                      dark ? "bg-brass" : "bg-garnet-700",
+                      dark ? "bg-brass" : "bg-accent",
                     )}
                     initial={false}
                     animate={{
@@ -122,11 +122,11 @@ export function StickyNarrative({
               key={step.title}
               ref={setRef(index)}
               className={cn(
-                "border-l-2 py-10 pl-6 transition-colors duration-[--duration-base] lg:py-16 lg:pl-10",
+                "border-l-2 py-10 pl-6 transition-colors duration-(--duration-base) lg:py-16 lg:pl-10",
                 index === active
                   ? dark
                     ? "border-brass"
-                    : "border-garnet-700"
+                    : "border-accent"
                   : dark
                     ? "border-oxblood-700"
                     : "border-line-2",
@@ -151,7 +151,7 @@ export function StickyNarrative({
 
               <h3
                 className={cn(
-                  "mt-3 text-2xl transition-colors duration-[--duration-base]",
+                  "mt-3 text-2xl transition-colors duration-(--duration-base)",
                   dark
                     ? index === active
                       ? "text-limestone-50"

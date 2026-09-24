@@ -1,7 +1,8 @@
+import Link from "next/link";
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
 import { Section, SectionHeading } from "@/components/shared/section";
+import { EnquiryForm } from "@/components/forms/enquiry-form";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { investmentOpportunitiesQuery } from "@/sanity/queries";
 import type { InvestmentOpportunity } from "@/sanity/types";
@@ -36,7 +37,7 @@ export default async function InvestmentsPage() {
           {[...servicesByCategory.investment].map((service, index) => (
             <li key={service.slug} className="relief relief-interactive corner-brand-sm">
               <Reveal index={index}>
-                <a href={`/services/${service.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
+                <Link href={`/services/${service.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
                   <h2 className="text-2xl">{service.title}</h2>
                   <p className="mt-4 grow text-muted">{service.shortDescription}</p>
                   <ul className="mt-6 space-y-2">
@@ -47,7 +48,7 @@ export default async function InvestmentsPage() {
                     ))}
                   </ul>
                   <span className="link-draw mt-0 text-sm text-accent">Read more</span>
-                </a>
+                </Link>
               </Reveal>
             </li>
           ))}
@@ -68,36 +69,52 @@ export default async function InvestmentsPage() {
           <ul className="mt-10 grid gap-5 lg:grid-cols-3">
             {opportunities.map((opportunity) => (
               <li key={opportunity._id} className="relief relief-interactive corner-brand-sm">
-                <a href={`/investments/${opportunity.slug}`} className="flex h-full flex-col p-8">
+                <Link href={`/investments/${opportunity.slug}`} className="flex h-full flex-col p-8">
                   <h3 className="text-xl">{opportunity.title}</h3>
                   <p className="mt-3 grow text-muted">{opportunity.summary}</p>
                   {opportunity.location ? (
                     <p className="mt-4 text-sm text-muted">{opportunity.location}</p>
                   ) : null}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </Section>
       ) : null}
 
-      <Section tone="dark">
-        <div className="max-w-(--container-prose)">
-          <h2 className="text-3xl lg:text-4xl">Discuss an investment</h2>
-          <p className="mt-6 text-lg text-limestone-300">
-            Whether you are bringing a project to Garnet or exploring participation, the conversation
-            starts the same way.
-          </p>
-          <ButtonLink href="/contact" variant="onDarkSolid" size="lg" className="mt-10">
-            Contact the team
-          </ButtonLink>
-          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-limestone-400">
-            Nothing on this page is an offer, solicitation or recommendation to invest. No return is
-            promised or implied. Any specific opportunity is discussed directly, with its own risk
-            disclosure.
-          </p>
+      <Section>
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
+              Discuss an investment
+            </h2>
+            <p className="mt-6 text-lg text-muted">
+              Whether you are bringing a project to Garnet or exploring participation, the
+              conversation starts the same way.
+            </p>
+            <p className="mt-8 text-sm leading-relaxed text-muted">
+              We do not ask for financial statements or identity documents here. Those are discussed
+              directly once we understand what you have in mind.
+            </p>
+          </div>
+
+          <div className="lg:col-span-7">
+            <EnquiryForm />
+          </div>
         </div>
       </Section>
+
+      {/* Page-level, not form-level. The form carries its own version, but the
+          disclosure must not depend on a visitor reaching the bottom of it. */}
+      <div className="border-t border-line">
+        <div className="shell py-10">
+          <p className="max-w-3xl text-sm leading-relaxed text-muted">
+            Nothing on this page is an offer, solicitation or recommendation to invest. No return is
+            promised or implied. Any specific opportunity is discussed directly, under its own
+            documentation and risk disclosure.
+          </p>
+        </div>
+      </div>
     </>
   );
 }

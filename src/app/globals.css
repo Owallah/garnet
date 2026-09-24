@@ -48,7 +48,7 @@
   --color-limestone-400: #a2988a; /* muted text on dark */
   /* Interactive boundaries must clear 3:1 against the ground for WCAG 2.2
      SC 1.4.11. Decorative rules may be lighter; controls may not. */
-  --color-limestone-500: #8a7f72;
+  --color-limestone-500: #7d7264;
 
   /* -----------------------------------------------------------------------
      SEMANTIC TOKENS
@@ -82,7 +82,7 @@
   --color-selected: var(--color-garnet-50);
 
   --color-graphite: #3a3234;
-  --color-graphite-muted: #6b6062;
+  --color-graphite-muted: #665b5d;
 
   /* Brass carries small emphasis on the dark ground only: numerals, rules,
      one-word labels. It is never a surface fill. */
@@ -235,6 +235,12 @@
   --color-accent-strong: #e8b6c3;
   --color-selected: #3a1520;
 
+  /* #b23a18 is only 3.1:1 on this ground. Lightened here, still orange-shifted
+     so validation never reads as the brand colour. */
+  --color-error: #e07553;
+  --color-success: #5cb98e;
+  --color-warning: #d6a642;
+
   /* Light still comes from the top left; on a dark ground the highlight is a
      warm lift rather than white, and the cast goes to near-black. */
   --shadow-relief-sm: 4px 4px 10px rgba(0, 0, 0, 0.45), -3px -3px 8px rgba(122, 62, 62, 0.10);
@@ -291,18 +297,22 @@
     color: var(--color-ink);
     letter-spacing: var(--tracking-heading);
     font-weight: var(--font-weight-heading);
+    /* Display type sets Light 300 across a wide measure, where an unbalanced
+       break strands a single word on the last line. This is the most visible
+       typographic fix available on a page that is mostly typography. */
+    text-wrap: balance;
   }
-
-
 
   p {
     text-wrap: pretty;
   }
 
+  /* No border-radius here: the outline already follows the element's own
+     radius in every modern browser, so setting one only distorts the element
+     itself when it is focused. */
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
-    border-radius: var(--radius-xs);
   }
 
   .on-dark :focus-visible {
@@ -418,18 +428,25 @@
      hover-only version feels like a picture of a button. */
   .relief-interactive {
     transition:
-      box-shadow var(--duration-fast) var(--ease-standard),
-      transform var(--duration-fast) var(--ease-standard),
-      border-color var(--duration-fast) var(--ease-standard);
+      box-shadow var(--duration-fast) var(--ease-entrance),
+      transform var(--duration-instant) var(--ease-entrance),
+      border-color var(--duration-fast) var(--ease-entrance);
   }
 
-  .relief-interactive:hover {
-    box-shadow: var(--shadow-relief-lg);
+  /* Gated to pointers that can actually hover. On touch, :hover fires on tap
+     and sticks until the next tap elsewhere, leaving the surface lifted after
+     the press has already finished. */
+  @media (hover: hover) and (pointer: fine) {
+    .relief-interactive:hover {
+      box-shadow: var(--shadow-relief-lg);
+    }
   }
 
+  /* A 1px drop is below the threshold of feeling. Scale is what reads as a
+     press, and it carries the element's content down with it. */
   .relief-interactive:active {
     box-shadow: var(--shadow-pressed);
-    transform: translateY(1px);
+    transform: scale(0.97);
   }
 
   .on-dark .relief,
@@ -443,6 +460,41 @@
   .on-dark .relief-interactive:active,
   .relief-dark.relief-interactive:active {
     box-shadow: var(--shadow-pressed-dark);
+  }
+
+  /* ---------------------------------------------------------------------
+     CONTROL INDICATORS
+
+     The tick and the chevron live here rather than in a Tailwind arbitrary
+     value. Arbitrary values cannot contain spaces, and an inline SVG is full
+     of them — the class silently splits into junk tokens and no rule is ever
+     generated. Plain CSS also lets the chevron follow the theme.
+     --------------------------------------------------------------------- */
+  .control-check:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* The checked fill is --color-accent, which lightens in dark mode. A white
+     tick on that lightened accent measures 2.3:1, so the tick inverts with it. */
+  .dark .control-check:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c100f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .control-chevron {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b6062' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+  }
+
+  .dark .control-chevron {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a99c95' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   }
 
   /* ---------------------------------------------------------------------
@@ -465,13 +517,19 @@
     background-color: currentColor;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform var(--duration-fast) var(--ease-standard);
+    transition: transform var(--duration-fast) var(--ease-entrance);
   }
 
-  .link-draw:hover::after,
-  .link-draw:focus-visible::after,
-  .group:hover .link-draw::after {
+  /* Focus is never gated — a keyboard user needs this on every device. */
+  .link-draw:focus-visible::after {
     transform: scaleX(1);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .link-draw:hover::after,
+    .group:hover .link-draw::after {
+      transform: scaleX(1);
+    }
   }
 }
 

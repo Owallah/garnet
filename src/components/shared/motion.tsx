@@ -81,11 +81,11 @@ export function HeroItem({
 /** A hairline that draws across from the left as the page loads. */
 export function HeroRule({ className }: { className?: string }) {
   const reduced = useReducedMotion();
-  if (reduced) return <div className={`h-px bg-garnet-700 ${className ?? ""}`} />;
+  if (reduced) return <div className={`h-px bg-accent ${className ?? ""}`} />;
 
   return (
     <motion.div
-      className={`h-px origin-left bg-garnet-700 ${className ?? ""}`}
+      className={`h-px origin-left bg-accent ${className ?? ""}`}
       variants={{
         hidden: { scaleX: 0 },
         visible: { scaleX: 1, transition: { duration: 1.1, ease: EASE } },

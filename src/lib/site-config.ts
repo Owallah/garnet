@@ -16,6 +16,9 @@ export const siteConfig = {
   country: "Kenya",
   description:
     "Garnet Solutions Limited structures and facilitates financing through partner institutions, deploys its own capital into qualifying investments, and coordinates logistics for businesses across Kenya and East Africa.",
+  /** Under 160 characters, or search results truncate it. */
+  metaDescription:
+    "Financing facilitated through partner institutions, proprietary investment, and logistics for SMEs, corporates and individuals across Kenya.",
   // Confirmed in the company profile.
   email: "info@garnetsolutionsltd.com",
   website: "www.garnetsolutions.co.ke",

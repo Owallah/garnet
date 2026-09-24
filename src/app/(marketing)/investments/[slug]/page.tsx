@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { Section, SectionHeading } from "@/components/shared/section";
+import { EnquiryForm } from "@/components/forms/enquiry-form";
 import { MediaSlot } from "@/components/shared/media-slot";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { investmentOpportunityBySlugQuery, opportunitySlugsQuery } from "@/sanity/queries";
@@ -42,6 +43,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: `/investments/${slug}` },
   };
 }
+
+/** Opportunity categories map onto the enquiry form's interest options. */
+const interestForCategory: Record<string, "structured-fixed-income" | "real-estate" | "project" | "venture" | "general"> = {
+  "structured-fixed-income": "structured-fixed-income",
+  "real-estate": "real-estate",
+  project: "project",
+  venture: "venture",
+  corporate: "venture",
+};
 
 export default async function OpportunityPage({ params }: Props) {
   const { slug } = await params;
@@ -94,9 +104,29 @@ export default async function OpportunityPage({ params }: Props) {
         </Section>
       ) : null}
 
+      <Section tone="muted">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
+              Enquire about this opportunity
+            </h2>
+            <p className="mt-6 text-lg text-muted">
+              Tell us what you would like to know and a member of the team will come back to you.
+            </p>
+          </div>
+          <div className="lg:col-span-7">
+            <EnquiryForm
+              opportunitySlug={opportunity.slug}
+              opportunityTitle={opportunity.title}
+              defaultInterest={interestForCategory[opportunity.category] ?? "general"}
+            />
+          </div>
+        </div>
+      </Section>
+
       {opportunity.riskDisclosure ? (
         <Section>
-          <div className="max-w-(--container-prose) border-l-2 border-garnet-700 pl-6">
+          <div className="max-w-(--container-prose) border-l-2 border-accent pl-6">
             <h2 className="text-2xl">Risk disclosure</h2>
             <div className="mt-4 space-y-4 text-muted">
               <PortableText value={opportunity.riskDisclosure} />

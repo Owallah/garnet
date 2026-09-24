@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
@@ -94,9 +95,9 @@ export default async function ServicePage({ params }: Props) {
       <Section>
         <nav aria-label="Breadcrumb" className="mb-10 text-sm text-muted">
           <ol className="flex flex-wrap gap-2">
-            <li><a href="/" className="hover:text-ink">Home</a></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li aria-hidden>/</li>
-            <li><a href="/services" className="hover:text-ink">Services</a></li>
+            <li><Link href="/services" className="hover:text-ink">Services</Link></li>
             <li aria-hidden>/</li>
             <li aria-current="page" className="text-ink">{service.title}</li>
           </ol>
@@ -191,12 +192,12 @@ export default async function ServicePage({ params }: Props) {
                     if (!industry) return null;
                     return (
                       <li key={industrySlug} className="relief relief-interactive corner-brand-sm">
-                        <a
+                        <Link
                           href={`/industries/${industrySlug}`}
                           className="group flex items-center justify-between gap-4 p-5"
                         >
                           <span>{industry.title}</span>
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}
@@ -213,12 +214,12 @@ export default async function ServicePage({ params }: Props) {
                     if (!solution) return null;
                     return (
                       <li key={solutionSlug} className="relief relief-interactive corner-brand-sm">
-                        <a
+                        <Link
                           href={`/solutions/${solutionSlug}`}
                           className="group flex items-center justify-between gap-4 p-5"
                         >
                           <span>{solution.title}</span>
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Section } from "@/components/shared/section";
 import { MediaSlot } from "@/components/shared/media-slot";
 import { solutions } from "@/content/solutions";
@@ -26,7 +27,7 @@ export function Audiences() {
       <ul className="mt-16 space-y-16 lg:space-y-20">
         {solutions.map((solution, index) => (
           <li key={solution.slug}>
-            <a
+            <Link
               href={`/solutions/${solution.slug}`}
               className="group grid items-center gap-8 border-t border-line-2 pt-10 lg:grid-cols-12 lg:gap-14"
             >
@@ -48,7 +49,7 @@ export function Audiences() {
                   How we work with {solution.title.toLowerCase()}
                 </span>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

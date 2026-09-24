@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { MediaSlot } from "@/components/shared/media-slot";
 import { Reveal } from "@/components/shared/reveal";
@@ -27,7 +28,7 @@ export default function SolutionsPage() {
           {solutions.map((solution, index) => (
             <li key={solution.slug}>
               <Reveal index={index}>
-                <a
+                <Link
                   href={`/solutions/${solution.slug}`}
                   className="group grid items-center gap-10 border-t border-line pt-10 lg:grid-cols-12"
                 >
@@ -40,7 +41,7 @@ export default function SolutionsPage() {
                     <p className="mt-5 text-lg text-muted">{solution.description}</p>
                     <span className="link-draw mt-0 text-sm text-accent">See the full picture</span>
                   </div>
-                </a>
+                </Link>
               </Reveal>
             </li>
           ))}

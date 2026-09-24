@@ -58,6 +58,9 @@ export function Ecosystem() {
             className={cn(
               "corner-brand-sm flex flex-col p-8 lg:p-10",
               pillar.own
+                // Literal, not semantic: a brand fill carrying its own
+                // foreground (garnet-100 on garnet-700 is 7.5:1), so it has
+                // no reason to follow the page theme.
                 ? "border border-garnet-800 bg-garnet-700 text-garnet-100 shadow-(--shadow-relief)"
                 : "relief",
             )}

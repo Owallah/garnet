@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Section } from "@/components/shared/section";
 import { industries } from "@/content/industries";
 
@@ -22,15 +23,15 @@ export function IndustriesRow() {
       <ul className="mt-14">
         {industries.map((industry) => (
           <li key={industry.slug} className="border-t border-line-2 last:border-b">
-            <a
+            <Link
               href={`/industries/${industry.slug}`}
-              className="group relief-interactive grid gap-2 rounded-[--radius-md] border border-transparent px-4 py-7 hover:border-line hover:bg-(image:--gradient-raised) hover:shadow-(--shadow-relief-sm) lg:grid-cols-12 lg:gap-8"
+              className="group relief-interactive grid gap-2 rounded-(--radius-md) border border-transparent px-4 py-7 hover:border-line hover:bg-(image:--gradient-raised) hover:shadow-(--shadow-relief-sm) lg:grid-cols-12 lg:gap-8"
             >
               <span className="text-2xl text-ink lg:col-span-4">
                 <span className="link-draw">{industry.title}</span>
               </span>
               <span className="text-muted lg:col-span-8">{industry.description}</span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

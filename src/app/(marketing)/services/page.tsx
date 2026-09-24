@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
@@ -55,11 +56,11 @@ export default function ServicesPage() {
               {group.services.map((service, index) => (
                 <li key={service.slug} className="relief relief-interactive corner-brand-sm">
                   <Reveal index={index}>
-                    <a href={`/services/${service.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
+                    <Link href={`/services/${service.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
                       <h3 className="text-xl">{service.title}</h3>
                       <p className="mt-3 grow text-muted">{service.shortDescription}</p>
                       <span className="link-draw mt-0 text-sm text-accent">Read more</span>
-                    </a>
+                    </Link>
                   </Reveal>
                 </li>
               ))}

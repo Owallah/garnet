@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Section } from "@/components/shared/section";
@@ -118,9 +119,9 @@ export default async function ContactPage() {
                 The financing form asks the right questions in the right order, which gets you a
                 faster answer.
               </p>
-              <a href="/request-financing" className="link-draw mt-4 inline-block text-sm text-accent">
+              <Link href="/request-financing" className="link-draw mt-4 inline-block text-sm text-accent">
                 Request financing
-              </a>
+              </Link>
             </div>
           </aside>
         </div>

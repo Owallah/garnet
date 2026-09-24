@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Audiences,
   ClosingCta,
@@ -9,6 +10,12 @@ import {
   TrustStrip,
   WhyGarnet,
 } from "@/components/sections";
+
+export const metadata: Metadata = {
+  description:
+    "Garnet structures access to capital with its financing partners, invests its own capital, and moves the goods both pay for. Nairobi, since 2015.",
+  alternates: { canonical: "/" },
+};
 
 /**
  * The homepage is composition only. Each band owns its own layout and copy,
