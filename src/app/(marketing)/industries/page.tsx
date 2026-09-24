@@ -1,12 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/shared/section";
+import { Reveal } from "@/components/shared/reveal";
 import { industries } from "@/content/industries";
 
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "The sectors Garnet works across in Kenya and East Africa: manufacturing, agriculture, retail and FMCG, construction, and import/export.",
+    "Manufacturing, agriculture, retail and FMCG, construction, and import/export — the sectors Garnet works across in Kenya and East Africa.",
   alternates: { canonical: "/industries" },
 };
 
@@ -22,14 +23,16 @@ export default function IndustriesPage() {
       </Section>
 
       <Section className="pt-0 lg:pt-0">
-        <ul className="grid gap-5 lg:grid-cols-2">
-          {industries.map((industry) => (
-            <li key={industry.slug} className="relief relief-interactive corner-brand-sm">
-              <Link href={`/industries/${industry.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
-                <h2 className="text-2xl">{industry.title}</h2>
-                <p className="mt-4 grow text-muted">{industry.description}</p>
-                <span className="link-draw mt-0 text-sm text-accent">Read more</span>
-              </Link>
+        <ul className="grid gap-5 md:grid-cols-2">
+          {industries.map((industry, index) => (
+            <li key={industry.slug} className="grid">
+              <Reveal index={index} className="relief relief-interactive corner-brand-sm">
+                <Link href={`/industries/${industry.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
+                  <h2 className="text-2xl">{industry.title}</h2>
+                  <p className="mt-4 grow text-muted">{industry.description}</p>
+                  <span className="link-draw mt-0 text-sm text-accent">Read more</span>
+                </Link>
+              </Reveal>
             </li>
           ))}
         </ul>

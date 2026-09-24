@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/button";
 import { MediaSlot } from "@/components/shared/media-slot";
 import { Section, SectionHeading } from "@/components/shared/section";
+import { Reveal } from "@/components/shared/reveal";
 import { StickyNarrative } from "@/components/scrolly";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { industryBySlugQuery } from "@/sanity/queries";
@@ -84,7 +85,7 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* Scene - the sector-specific constraints, one at a time. */}
+      {/* Scene — the sector-specific constraints, one at a time. */}
       <StickyNarrative
         heading="Where capital gets stuck in this sector"
         steps={industry.challenges.map((item) => ({
@@ -98,17 +99,19 @@ export default async function IndustryPage({ params }: Props) {
 
       <Section tone="muted">
         <SectionHeading title="What Garnet brings to it" />
-        <ul className="mt-10 grid gap-5 lg:grid-cols-2">
-          {industry.relevantServices.map((serviceSlug) => {
+        <ul className="mt-10 grid gap-5 md:grid-cols-2">
+          {industry.relevantServices.map((serviceSlug, index) => {
             const service = servicesBySlug.get(serviceSlug);
             if (!service) return null;
             return (
-              <li key={serviceSlug} className="relief relief-interactive corner-brand-sm">
-                <Link href={`/services/${serviceSlug}`} className="group flex h-full flex-col p-8">
-                  <h3 className="text-xl">{service.title}</h3>
-                  <p className="mt-3 grow text-muted">{service.shortDescription}</p>
-                  <span className="link-draw mt-0 text-sm text-accent">Read more</span>
-                </Link>
+              <li key={serviceSlug} className="grid">
+                <Reveal index={index} className="relief relief-interactive corner-brand-sm">
+                  <Link href={`/services/${serviceSlug}`} className="group flex h-full flex-col p-8">
+                    <h3 className="text-xl">{service.title}</h3>
+                    <p className="mt-3 grow text-muted">{service.shortDescription}</p>
+                    <span className="link-draw mt-0 text-sm text-accent">Read more</span>
+                  </Link>
+                </Reveal>
               </li>
             );
           })}
@@ -117,7 +120,7 @@ export default async function IndustryPage({ params }: Props) {
 
       <Section tone="dark">
         <div className="max-w-(--container-prose)">
-          <h2 className="text-3xl lg:text-4xl">Working in {industry.title.toLowerCase()}?</h2>
+          <h2 className="type-section">Working in {industry.title.toLowerCase()}?</h2>
           <p className="mt-6 text-lg text-limestone-300">
             Tell us the requirement and we will tell you which route fits it.
           </p>

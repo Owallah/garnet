@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Reveal } from "@/components/shared/reveal";
 import { Section, SectionHeading } from "@/components/shared/section";
+import { EmptyState } from "@/components/shared/empty-state";
 import { EnquiryForm } from "@/components/forms/enquiry-form";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { investmentOpportunitiesQuery } from "@/sanity/queries";
@@ -33,10 +34,10 @@ export default async function InvestmentsPage() {
       </Section>
 
       <Section tone="muted">
-        <ul className="grid gap-5 lg:grid-cols-2">
+        <ul className="grid gap-5 md:grid-cols-2">
           {[...servicesByCategory.investment].map((service, index) => (
-            <li key={service.slug} className="relief relief-interactive corner-brand-sm">
-              <Reveal index={index}>
+            <li key={service.slug} className="grid">
+              <Reveal index={index} className="relief relief-interactive corner-brand-sm">
                 <Link href={`/services/${service.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
                   <h2 className="text-2xl">{service.title}</h2>
                   <p className="mt-4 grow text-muted">{service.shortDescription}</p>
@@ -62,30 +63,43 @@ export default async function InvestmentsPage() {
         />
       </Section>
 
-      {/* Opportunity list appears only once the client publishes approved records. */}
-      {opportunities.length ? (
-        <Section tone="muted">
-          <SectionHeading title="Current opportunities" />
-          <ul className="mt-10 grid gap-5 lg:grid-cols-3">
-            {opportunities.map((opportunity) => (
-              <li key={opportunity._id} className="relief relief-interactive corner-brand-sm">
-                <Link href={`/investments/${opportunity.slug}`} className="flex h-full flex-col p-8">
-                  <h3 className="text-xl">{opportunity.title}</h3>
-                  <p className="mt-3 grow text-muted">{opportunity.summary}</p>
-                  {opportunity.location ? (
-                    <p className="mt-4 text-sm text-muted">{opportunity.location}</p>
-                  ) : null}
-                </Link>
+      {/* The section always renders. Opportunities appear only once the client
+          publishes approved records; until then it says so rather than
+          vanishing, which reads as a bug to whoever is editing the CMS and as
+          a dead end to a visitor. */}
+      <Section tone="muted">
+        <SectionHeading title="Current opportunities" />
+        {opportunities.length ? (
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {opportunities.map((opportunity, index) => (
+              <li key={opportunity._id} className="grid">
+                <Reveal index={index} className="relief relief-interactive corner-brand-sm">
+                  <Link href={`/investments/${opportunity.slug}`} className="flex h-full flex-col p-8">
+                    <h3 className="text-xl">{opportunity.title}</h3>
+                    <p className="mt-3 grow text-muted">{opportunity.summary}</p>
+                    {opportunity.location ? (
+                      <p className="mt-4 text-sm text-muted">{opportunity.location}</p>
+                    ) : null}
+                  </Link>
+                </Reveal>
               </li>
             ))}
           </ul>
-        </Section>
-      ) : null}
+        ) : (
+          <EmptyState
+            className="mt-10"
+            title="Nothing open at the moment"
+            body="An opportunity is published here only once it has been approved with its own risk disclosure. Tell us what you are looking for and we will be in touch when something fits."
+            actionLabel="Send an enquiry"
+            actionHref="#enquire"
+          />
+        )}
+      </Section>
 
-      <Section>
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <h2 className="type-display text-(length:--text-opener)/(--text-opener--line-height)">
+      <Section id="enquire" className="scroll-mt-24">
+        <div className="grid gap-14 md:grid-cols-12 md:gap-10 lg:gap-16">
+          <div className="md:col-span-5">
+            <h2 className="type-section">
               Discuss an investment
             </h2>
             <p className="mt-6 text-lg text-muted">
@@ -98,7 +112,7 @@ export default async function InvestmentsPage() {
             </p>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="md:col-span-7">
             <EnquiryForm />
           </div>
         </div>

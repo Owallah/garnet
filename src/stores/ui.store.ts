@@ -2,24 +2,23 @@
 
 import { create } from "zustand";
 
+/**
+ * Global UI state.
+ *
+ * Deliberately one concern. The store previously also carried `activeModal`
+ * and `cookieConsent` with their setters, none of which any component read:
+ * scaffolding written against a modal system and a consent banner that were
+ * never built. Unused store fields are worse than absent ones, because the
+ * next person to need a modal will wire into a slot that has no renderer
+ * behind it and wonder why nothing appears. When a modal or a consent banner
+ * is actually built, its state comes back with it.
+ */
 type UIState = {
   mobileMenuOpen: boolean;
-  activeModal: string | null;
-  cookieConsent: "accepted" | "rejected" | null;
   setMobileMenuOpen: (open: boolean) => void;
-  toggleMobileMenu: () => void;
-  openModal: (id: string) => void;
-  closeModal: () => void;
-  setCookieConsent: (value: "accepted" | "rejected") => void;
 };
 
 export const useUIStore = create<UIState>((set) => ({
   mobileMenuOpen: false,
-  activeModal: null,
-  cookieConsent: null,
   setMobileMenuOpen: (open) => set({ mobileMenuOpen: open }),
-  toggleMobileMenu: () => set((state) => ({ mobileMenuOpen: !state.mobileMenuOpen })),
-  openModal: (id) => set({ activeModal: id }),
-  closeModal: () => set({ activeModal: null }),
-  setCookieConsent: (value) => set({ cookieConsent: value }),
 }));

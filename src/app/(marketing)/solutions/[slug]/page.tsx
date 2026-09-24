@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/button";
 import { MediaSlot } from "@/components/shared/media-slot";
 import { Section, SectionHeading } from "@/components/shared/section";
+import { Reveal } from "@/components/shared/reveal";
 import { StickyNarrative } from "@/components/scrolly";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { solutionBySlugQuery } from "@/sanity/queries";
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const solution = await resolve(slug);
   if (!solution) return {};
   return {
-    title: solution.seo?.title ?? `${solution.title} | financing, investment and logistics`,
+    title: solution.seo?.title ?? `${solution.title} — financing, investment and logistics`,
     description: solution.seo?.description ?? solution.description,
     alternates: { canonical: `/solutions/${slug}` },
   };
@@ -84,7 +85,7 @@ export default async function SolutionPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* Scene - what this audience actually arrives with. */}
+      {/* Scene — what this audience actually arrives with. */}
       <StickyNarrative
         heading="What we are usually asked for"
         steps={solution.painPoints.map((item) => ({
@@ -98,17 +99,19 @@ export default async function SolutionPage({ params }: Props) {
 
       <Section tone="muted">
         <SectionHeading title="Services that apply" />
-        <ul className="mt-10 grid gap-5 lg:grid-cols-2">
-          {solution.services.map((serviceSlug) => {
+        <ul className="mt-10 grid gap-5 md:grid-cols-2">
+          {solution.services.map((serviceSlug, index) => {
             const service = servicesBySlug.get(serviceSlug);
             if (!service) return null;
             return (
-              <li key={serviceSlug} className="relief relief-interactive corner-brand-sm">
-                <Link href={`/services/${serviceSlug}`} className="group flex h-full flex-col p-8">
-                  <h3 className="text-xl">{service.title}</h3>
-                  <p className="mt-3 grow text-muted">{service.shortDescription}</p>
-                  <span className="link-draw mt-0 text-sm text-accent">Read more</span>
-                </Link>
+              <li key={serviceSlug} className="grid">
+                <Reveal index={index} className="relief relief-interactive corner-brand-sm">
+                  <Link href={`/services/${serviceSlug}`} className="group flex h-full flex-col p-8">
+                    <h3 className="text-xl">{service.title}</h3>
+                    <p className="mt-3 grow text-muted">{service.shortDescription}</p>
+                    <span className="link-draw mt-0 text-sm text-accent">Read more</span>
+                  </Link>
+                </Reveal>
               </li>
             );
           })}
@@ -117,7 +120,7 @@ export default async function SolutionPage({ params }: Props) {
 
       <Section tone="dark">
         <div className="max-w-(--container-prose)">
-          <h2 className="text-3xl lg:text-4xl">Start the conversation</h2>
+          <h2 className="type-section">Start the conversation</h2>
           <p className="mt-6 text-lg text-limestone-300">
             Tell us what you need funded or moved, and we will tell you what is workable.
           </p>

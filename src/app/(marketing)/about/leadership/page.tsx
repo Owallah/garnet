@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/shared/section";
+import { Reveal } from "@/components/shared/reveal";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { teamQuery } from "@/sanity/queries";
 import type { TeamMember } from "@/sanity/types";
@@ -54,26 +55,31 @@ export default async function LeadershipPage() {
 
       <Section tone="muted" className="pt-0 lg:pt-0">
         <ul className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((person) => (
+          {team.map((person, index) => (
             <li key={person._id}>
-              {person.photo?.url ? (
-                <div className="relief corner-brand-sm relative aspect-4/5 overflow-hidden">
-                  <Image
-                    src={person.photo.url}
-                    alt={person.name}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <Initials name={person.name} />
-              )}
-              <h2 className="mt-6 text-xl">{person.name}</h2>
-              <p className="mt-1 text-sm text-accent">{person.position}</p>
-              {person.biography ? (
-                <p className="mt-4 text-muted">{person.biography}</p>
-              ) : null}
+              <Reveal index={index}>
+                {person.photo?.url ? (
+                  <div className="relief corner-brand-sm relative aspect-4/5 overflow-hidden">
+                    <Image
+                      src={person.photo.url}
+                      alt={person.name}
+                      fill
+                      // Three across at lg, two at sm, one below that. The
+                      // single-column case was missing, so phones were served
+                      // the 50vw candidate and rendered it at twice its width.
+                      sizes="(min-width: 64rem) 33vw, (min-width: 40rem) 50vw, calc(100vw - 3rem)"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <Initials name={person.name} />
+                )}
+                <h2 className="mt-6 text-xl">{person.name}</h2>
+                <p className="mt-1 text-sm text-accent">{person.position}</p>
+                {person.biography ? (
+                  <p className="mt-4 text-muted">{person.biography}</p>
+                ) : null}
+              </Reveal>
             </li>
           ))}
         </ul>

@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
  *
  * No `focus:outline-none` here. Tailwind utilities sit in a later cascade layer
  * than the base stylesheet, so that one utility cancelled the global
- * `:focus-visible` ring entirely - leaving a 1px border change that measures
+ * `:focus-visible` ring entirely — leaving a 1px border change that measures
  * 2.0:1 in dark mode. The ring and the border now work together.
  */
 const controlBase =
@@ -97,7 +97,10 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(fun
       aria-invalid={invalid || undefined}
       className={cn(
         controlBase,
-        "min-h-32 py-3 leading-relaxed",
+        // `resize-y` rather than the browser default `both`: horizontal drag
+        // pulls the control out of its column and past the field label, which
+        // looks broken and cannot be undone except by dragging back.
+        "min-h-32 resize-y py-3 leading-relaxed",
         invalid ? "border-error" : "border-control",
         className,
       )}

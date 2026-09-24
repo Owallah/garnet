@@ -52,10 +52,10 @@ export default function ServicesPage() {
               <p className="max-w-md text-sm text-muted">{group.note}</p>
             </div>
 
-            <ul className="mt-10 grid gap-5 lg:grid-cols-2">
+            <ul className="mt-10 grid gap-5 md:grid-cols-2">
               {group.services.map((service, index) => (
-                <li key={service.slug} className="relief relief-interactive corner-brand-sm">
-                  <Reveal index={index}>
+                <li key={service.slug} className="grid">
+                  <Reveal index={index} className="relief relief-interactive corner-brand-sm">
                     <Link href={`/services/${service.slug}`} className="group flex h-full flex-col p-8 lg:p-10">
                       <h3 className="text-xl">{service.title}</h3>
                       <p className="mt-3 grow text-muted">{service.shortDescription}</p>
@@ -71,7 +71,7 @@ export default function ServicesPage() {
 
       <Section tone="dark">
         <div className="max-w-(--container-prose)">
-          <h2 className="text-3xl lg:text-4xl">Not sure which of these you need?</h2>
+          <h2 className="type-section">Not sure which of these you need?</h2>
           <p className="mt-6 text-lg text-limestone-300">
             Describe the requirement and we will tell you which route fits, or whether it is not yet
             ready to go to a financier.

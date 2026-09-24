@@ -29,7 +29,7 @@ const ratioClass: Record<NonNullable<MediaSlotProps["ratio"]>, string> = {
 /**
  * Resolution order: CMS image, then a licensed local file from the manifest,
  * then an honest labelled placeholder carrying the brief. Never a decorative
- * gradient standing in for a photograph - a placeholder that looks designed
+ * gradient standing in for a photograph — a placeholder that looks designed
  * stops anyone from noticing the photograph is missing.
  */
 export function MediaSlot({
@@ -39,7 +39,19 @@ export function MediaSlot({
   alt,
   ratio = "3/2",
   priority = false,
-  sizes = "(min-width: 1024px) 50vw, 100vw",
+  /**
+   * The default describes the shape every unsized call site actually has: a
+   * `lg:col-span-5` panel inside the 12-column shell grid. The shell caps at
+   * 78rem with 3rem gutters and `gap-12`, so above that width the panel stops
+   * growing and is a fixed 452px; between 64rem and 78rem it tracks roughly
+   * 40vw; below that it stacks to the full gutter-inset width.
+   *
+   * The previous `50vw` was a guess rather than a measurement, and it made the
+   * browser pick the next srcset entry up on every large screen — real bytes
+   * spent on pixels no one can see. Sections with a different shape (the hero,
+   * the audience cards, the reach panel) pass their own `sizes`.
+   */
+  sizes = "(min-width: 78rem) 452px, (min-width: 64rem) 40vw, calc(100vw - 3rem)",
   className,
 }: MediaSlotProps) {
   const declared = slot ? getMediaSlot(slot) : undefined;
