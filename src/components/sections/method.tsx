@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
  * The logo mark holds a set of ascending bars inside its container. That is
  * the device here: five stages, each with a measure bar a step taller than the
  * last, drawing up from a shared baseline as the section enters. Numbering is
- * used because this genuinely is a sequence — a requirement moves through
+ * used because this genuinely is a sequence - a requirement moves through
  * these stages in order.
  *
  * The bar row is decorative and hidden from assistive technology; the ordered

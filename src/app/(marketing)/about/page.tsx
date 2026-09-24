@@ -86,7 +86,7 @@ export default function AboutPage() {
         </dl>
       </Section>
 
-      {/* Scene 1 — the five things Garnet does, read one at a time. */}
+      {/* Scene 1 - the five things Garnet does, read one at a time. */}
       <StickyNarrative
         heading="Our role as your partner"
         lede="Five things Garnet does, and one it deliberately does not."
@@ -95,7 +95,7 @@ export default function AboutPage() {
       />
 
 
-      {/* Scene 2 — differentiators. Unnumbered: these are not ordered. */}
+      {/* Scene 2 - differentiators. Unnumbered: these are not ordered. */}
       <StickyNarrative
         heading="Why clients stay"
         steps={differentiators.map((item) => ({ title: item.title, description: item.description }))}
@@ -103,7 +103,7 @@ export default function AboutPage() {
       />
 
 
-      {/* Scene 3 — reach shown as extent rather than as three equal cards. */}
+      {/* Scene 3 - reach shown as extent rather than as three equal cards. */}
       <PinnedMeasures
         heading="Where we work"
         lede="From an office in Nairobi outwards, as far as a requirement calls for."

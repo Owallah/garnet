@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 
 type RevealProps = {
   children: React.ReactNode;
-  /** Stagger index within a group. Kept small — long delays read as lag. */
+  /** Stagger index within a group. Kept small - long delays read as lag. */
   index?: number;
   className?: string;
 };

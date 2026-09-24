@@ -8,7 +8,7 @@ import { absoluteUrl } from "@/lib/utils";
 export const metadata: Metadata = {
   metadataBase: new URL(absoluteUrl("/")),
   title: {
-    default: `${siteConfig.name} — Financing, Investment and Logistics in Kenya`,
+    default: `${siteConfig.name} | Financing, Investment and Logistics in Kenya`,
     template: `%s | ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 /**
  * Organization data uses only what the company profile confirms. Phone and
- * postal address are omitted until the client supplies them — an incomplete
+ * postal address are omitted until the client supplies them - an incomplete
  * entity is better than an invented one.
  */
 const organisation = {

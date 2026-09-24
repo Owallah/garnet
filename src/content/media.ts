@@ -4,7 +4,7 @@
  * Every fixed image position on the site is declared here once: its intended
  * aspect ratio, the art direction brief, the alt text, and the credit line the
  * licence requires. A slot renders its photograph the moment `src` points at a
- * real file in /public/images — until then it renders the labelled placeholder
+ * real file in /public/images - until then it renders the labelled placeholder
  * carrying the brief.
  *
  * Two rules for whoever fills these:
@@ -15,7 +15,7 @@
  *      Unsplash and Pexels do not legally require it; AfricanStockPhoto,
  *      Getty and iStock have their own terms. Check before publishing.
  *
- * Content-driven images — services, solutions, industries, opportunities —
+ * Content-driven images - services, solutions, industries, opportunities -
  * are not listed here. Those come from Sanity, with their briefs held
  * alongside the copy in the content files.
  */
@@ -51,7 +51,7 @@ export const mediaSlots: Partial<Record<MediaSlotId, MediaSlotDefinition>> = {
     src: "/images/home-hero.webp",
     alt: "",
     brief:
-      "Hero, 3:4 portrait. A Nairobi commercial or industrial environment mid-activity — a working port, plant or trading floor. Natural light, editorial framing, people at work rather than posed. No handshakes, no stock boardroom, no laptop-and-coffee.",
+      "Hero, 3:4 portrait. A Nairobi commercial or industrial environment mid-activity: a working port, plant or trading floor. Natural light, editorial framing, people at work rather than posed. No handshakes, no stock boardroom, no laptop-and-coffee.",
     position: "center",
   },
   "home-reach": {
@@ -64,13 +64,13 @@ export const mediaSlots: Partial<Record<MediaSlotId, MediaSlotDefinition>> = {
     src: "/images/about-company.webp",
     alt: "",
     brief:
-      "About page, 4:3. The Garnet office or team in Nairobi. This one should be commissioned rather than licensed — a real photograph of the actual company is worth more here than any stock image, and its absence is noticeable on an about page.",
+      "About page, 4:3. The Garnet office or team in Nairobi. This one should be commissioned rather than licensed. A real photograph of the actual company is worth more here than any stock image, and its absence is noticeable on an about page.",
   },
   "solution-smes": {
     src: "/images/solution-smes.webp",
     alt: "",
     brief:
-      "SMEs. An owner-operated Kenyan business at work — a workshop floor, a wholesale operation, a small production line. Staff visibly doing the job. Cropped 3:2 on the homepage and 4:3 on the solutions page, so keep the subject off the extreme edges.",
+      "SMEs. An owner-operated Kenyan business at work: a workshop floor, a wholesale operation, a small production line. Staff visibly doing the job. Cropped 3:2 on the homepage and 4:3 on the solutions page, so keep the subject off the extreme edges.",
   },
   "solution-corporates": {
     src: "/images/solution-corporates.webp",
@@ -82,7 +82,7 @@ export const mediaSlots: Partial<Record<MediaSlotId, MediaSlotDefinition>> = {
     src: "/images/solution-individuals.webp",
     alt: "",
     brief:
-      "Individuals. One person in a considered moment — an advisory conversation, a vehicle being handed over. Specific and unposed. Avoid the smiling-family-with-keys register.",
+      "Individuals. One person in a considered moment: an advisory conversation, a vehicle being handed over. Specific and unposed. Avoid the smiling-family-with-keys register.",
   },
   "contact-office": {
     src: null,
@@ -96,7 +96,7 @@ export const mediaSlots: Partial<Record<MediaSlotId, MediaSlotDefinition>> = {
    SERVICE AND INDUSTRY IMAGES
 
    Twelve positions, one per service and per industry, each used on that page's
-   hero. Only `src` and `alt` live here — the art-direction brief for each one
+   hero. Only `src` and `alt` live here - the art-direction brief for each one
    already sits next to its copy in services.ts and industries.ts, and stating
    it twice is how the two versions end up disagreeing.
 

@@ -8,7 +8,7 @@ export async function verifyTurnstile(token: string | undefined, ip?: string) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   if (!secret) {
     if (process.env.NODE_ENV === "production") {
-      console.warn("[turnstile] TURNSTILE_SECRET_KEY missing — spam check skipped");
+      console.warn("[turnstile] TURNSTILE_SECRET_KEY missing, spam check skipped");
     }
     return true;
   }

@@ -18,7 +18,7 @@ export async function readJson(request: Request): Promise<unknown | null> {
   }
 }
 
-/** Field errors only — never echoes the submitted values back. */
+/** Field errors only - never echoes the submitted values back. */
 export function validationError(error: ZodError) {
   const fieldErrors: Record<string, string[]> = {};
   for (const issue of error.issues) {

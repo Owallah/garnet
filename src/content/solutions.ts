@@ -3,7 +3,7 @@ import type { DraftSolution } from "./types";
 /**
  * The three audience journeys, drafted from section 4 of the company profile.
  * Each one leads with the problem that audience actually arrives with, then
- * routes to services — rather than restating the service list three times.
+ * routes to services - rather than restating the service list three times.
  */
 export const solutions: DraftSolution[] = [
   {
@@ -13,7 +13,7 @@ export const solutions: DraftSolution[] = [
     description:
       "Facilitated funding to scale, asset financing to equip, and logistics support to move what you sell.",
     overview: [
-      "Small and medium businesses are where the gap between a viable plan and available capital is widest. The order is confirmed, the machine would pay for itself, the branch would work — and none of it can be funded out of this month's cash flow.",
+      "Small and medium businesses are where the gap between a viable plan and available capital is widest. The order is confirmed, the machine would pay for itself, the branch would work, and none of it can be funded out of this month's cash flow.",
       "Garnet's role is to make the request legible to a financier: assessed properly, structured against real cash flow, and taken to the institutions most likely to underwrite it. Where goods also need moving, logistics runs alongside rather than through a separate supplier.",
     ],
     painPoints: [
@@ -45,7 +45,7 @@ export const solutions: DraftSolution[] = [
       "logistics",
     ],
     imageBrief:
-      "An SME operating environment in Kenya — a workshop, a wholesale operation, a small manufacturing floor with staff at work.",
+      "An SME operating environment in Kenya: a workshop, a wholesale operation, a small manufacturing floor with staff at work.",
   },
   {
     title: "Corporates",
@@ -54,7 +54,7 @@ export const solutions: DraftSolution[] = [
     description:
       "Structured financing at scale, investment partnerships using Garnet's own capital, and coordinated logistics.",
     overview: [
-      "Corporate requirements are rarely a single facility. They involve several institutions, longer timelines, and — for infrastructure-adjacent projects — scale, currency and terms that domestic financing alone may not cover.",
+      "Corporate requirements are rarely a single facility. They involve several institutions, longer timelines, and (for infrastructure-adjacent projects) scale, currency and terms that domestic financing alone may not cover.",
       "Garnet structures those arrangements with its partner institutions, sources project capital from offshore and international financiers where the undertaking qualifies, and consolidates financing, investment and logistics into one point of coordination.",
     ],
     painPoints: [
@@ -88,7 +88,7 @@ export const solutions: DraftSolution[] = [
       "logistics",
     ],
     imageBrief:
-      "A corporate or infrastructure-scale environment — a large industrial site, a project under construction, an executive setting that reads institutional rather than generic.",
+      "A corporate or infrastructure-scale environment: a large industrial site, a project under construction, an executive setting that reads institutional rather than generic.",
   },
   {
     title: "Individuals",
@@ -98,7 +98,7 @@ export const solutions: DraftSolution[] = [
       "Personal and asset financing facilitated through partner institutions, and investment opportunities drawing on Garnet's own capital.",
     overview: [
       "Individuals get the same two things businesses do: an honest assessment of what is workable, and someone who stays with the process instead of handing over a form.",
-      "Financing is arranged through partner institutions. Investment opportunities are a separate matter — those draw on Garnet's own capital, and nothing offered is a guarantee of return.",
+      "Financing is arranged through partner institutions. Investment opportunities are a separate matter: those draw on Garnet's own capital, and nothing offered is a guarantee of return.",
     ],
     painPoints: [
       {
@@ -122,7 +122,7 @@ export const solutions: DraftSolution[] = [
       "structured-fixed-income-investment",
     ],
     imageBrief:
-      "An individual client context — an advisory conversation in a Nairobi office, or a personal asset in use. Specific and unposed.",
+      "An individual client context: an advisory conversation in a Nairobi office, or a personal asset in use. Specific and unposed.",
   },
 ];
 

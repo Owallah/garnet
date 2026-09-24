@@ -78,7 +78,7 @@ export function FinancingForm() {
   /**
    * The store persists a part-finished enquiry to sessionStorage. Reading it
    * after mount rather than during render keeps the server and client markup
-   * identical — hydrating straight from storage would mismatch.
+   * identical - hydrating straight from storage would mismatch.
    */
   React.useEffect(() => {
     if (hasMounted.current) return;
@@ -181,7 +181,7 @@ export function FinancingForm() {
       setStatus("sent");
       focusHeading();
     } catch {
-      setFormMessage("That did not send — check your connection and try again.");
+      setFormMessage("That did not send. Check your connection and try again.");
       setStatus("failed");
     }
   }
@@ -253,7 +253,7 @@ export function FinancingForm() {
             Asymmetric, and using a full transform string.
 
             `mode="wait"` serialises exit and enter, so the previous symmetric
-            280ms cost 560ms between pressing Continue and seeing anything —
+            280ms cost 560ms between pressing Continue and seeing anything -
             1.7s across a four-step form. The exit is now the fast half,
             because the user has already decided; the enter is what they are
             waiting to read.

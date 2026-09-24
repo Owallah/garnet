@@ -11,7 +11,7 @@ import * as React from "react";
  * this is where scrollytelling usually starts costing frames.
  *
  * The observer only reports which step is active. It never gates whether a
- * step is rendered — every step is in the DOM from first paint, readable and
+ * step is rendered - every step is in the DOM from first paint, readable and
  * announceable whether or not it has been scrolled past.
  */
 export function useActiveStep(count: number) {

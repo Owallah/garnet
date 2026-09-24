@@ -18,7 +18,7 @@ import { motion, useReducedMotion, type Variants } from "motion/react";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* ------------------------------------------------------------------------
-   HERO — orchestrated load sequence
+   HERO - orchestrated load sequence
    Rule draws, display lines rise in sequence, supporting text and actions
    follow, image clips open alongside. One moment, then it is over.
    ------------------------------------------------------------------------ */
@@ -113,7 +113,7 @@ export function HeroMedia({ children, className }: { children: React.ReactNode; 
 }
 
 /* ------------------------------------------------------------------------
-   PROCESS DIAGRAM — the one scroll-triggered moment
+   PROCESS DIAGRAM - the one scroll-triggered moment
    ------------------------------------------------------------------------ */
 
 export function StageGroup({ children, className }: { children: React.ReactNode; className?: string }) {

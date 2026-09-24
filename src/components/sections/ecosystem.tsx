@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
  * A filled garnet panel means Garnet's own capital is committed. An outlined
  * panel means the capital comes from a partner institution. That single
  * convention carries the facilitation/investment distinction visually, so the
- * page does not have to keep restating it in prose — and the caption below
+ * page does not have to keep restating it in prose - and the caption below
  * makes the convention explicit rather than leaving it to be guessed.
  */
 const pillars = [
   {
     name: "Financing",
     source: "Partner institutions",
-    body: "A requirement is assessed, structured and taken to the banking, asset-finance and trade-finance institutions best suited to it — including offshore financiers on qualifying projects.",
+    body: "A requirement is assessed, structured and taken to the banking, asset-finance and trade-finance institutions best suited to it, including offshore financiers on qualifying projects.",
     href: "/services",
     linkLabel: "See financing services",
     own: false,

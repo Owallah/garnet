@@ -30,7 +30,7 @@ const columns = [
 
 /**
  * Contact rows render only when Sanity supplies them. An unsupplied phone
- * number is absent from the DOM rather than shown as a placeholder — the
+ * number is absent from the DOM rather than shown as a placeholder - the
  * content rules forbid publishing details the client has not confirmed.
  */
 export function SiteFooter({ settings }: { settings?: SiteSettings | null }) {

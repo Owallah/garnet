@@ -12,7 +12,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 /**
  * Opportunity pages exist only for records the client has published with an
- * approved risk disclosure. No opportunity in Sanity means no route — the
+ * approved risk disclosure. No opportunity in Sanity means no route - the
  * template must never render an example.
  */
 export async function generateStaticParams() {

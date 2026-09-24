@@ -41,7 +41,7 @@ export default async function FaqsPage() {
           })),
   })).filter((category) => category.items.length > 0);
 
-  /* FAQPage structured data — the page genuinely is a Q&A list, so it
+  /* FAQPage structured data - the page genuinely is a Q&A list, so it
      qualifies. Built from the drafts, which always have plain-text answers;
      Portable Text would need flattening and Google only reads the text. */
   const structuredData = {

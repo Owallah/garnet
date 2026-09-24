@@ -12,7 +12,7 @@ const STORAGE_KEY = "garnet-theme";
  * Runs before first paint, inlined into <head>.
  *
  * Without this the page renders light, then swaps to dark once React has
- * hydrated — the white flash every dark-mode implementation ships with at
+ * hydrated - the white flash every dark-mode implementation ships with at
  * least once. It has to be a blocking inline script; there is no way to do
  * this from a component.
  */
@@ -28,7 +28,7 @@ e.style.colorScheme=d?'dark':'light';
    A tiny external store for the stored preference.
 
    Reading localStorage during render is impossible on the server, and the
-   usual workaround — a `mounted` flag set inside an effect — causes a
+   usual workaround - a `mounted` flag set inside an effect - causes a
    cascading render on every mount. useSyncExternalStore is built for exactly
    this: the server snapshot is "system", the client snapshot is whatever is in
    storage, and React reconciles the two without a second render pass.
@@ -73,7 +73,7 @@ const options: { value: Theme; label: string; Icon: typeof Sun }[] = [
 
 /**
  * Three states rather than two. A plain on/off switch cannot express "follow
- * my device", which is what most people actually want — and once they have
+ * my device", which is what most people actually want - and once they have
  * flipped a two-state toggle, the site stops tracking their system setting
  * forever with no way back.
  *

@@ -2,11 +2,11 @@ import localFont from "next/font/local";
 
 /**
  * Kind Sans (Gravitype, Marco Pezzotta) carries every piece of text on the
- * site — display and body both. Four weights are loaded and no more; each
+ * site - display and body both. Four weights are loaded and no more; each
  * additional weight is another render-blocking request for a marginal
  * difference nobody notices.
  *
- * LICENCE — ACTION REQUIRED BEFORE LAUNCH
+ * LICENCE - ACTION REQUIRED BEFORE LAUNCH
  * The supplied archive is the demo release: its bundled licence file reads
  * "Demo for Personal Use". That does not cover a commercial website. A
  * desktop-plus-webfont licence must be bought from the foundry before this

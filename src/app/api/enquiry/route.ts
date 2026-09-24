@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       await send({
         to: mailboxes.investment,
         replyTo: data.email,
-        subject: `Investment enquiry — ${data.interest} — ${data.fullName}`,
+        subject: `Investment enquiry | ${data.interest} | ${data.fullName}`,
         html: internalNotification({
           heading: "New investment enquiry",
           intro: "Submitted through an investment page.",
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
     await send({
       to: data.email,
-      subject: "Your investment enquiry — Garnet Solutions",
+      subject: "Your investment enquiry | Garnet Solutions",
       toName: data.fullName,
       html: acknowledgement({
         firstName: data.fullName.split(" ")[0],

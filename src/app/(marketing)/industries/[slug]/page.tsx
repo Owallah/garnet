@@ -84,7 +84,7 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* Scene — the sector-specific constraints, one at a time. */}
+      {/* Scene - the sector-specific constraints, one at a time. */}
       <StickyNarrative
         heading="Where capital gets stuck in this sector"
         steps={industry.challenges.map((item) => ({

@@ -21,7 +21,7 @@ const initial = { currentStep: 1 as FinancingStep, furthestStep: 1 as FinancingS
 
 /**
  * Persisted so a part-completed enquiry survives a refresh. Consent is
- * deliberately stripped on rehydrate — it must be given in the session that
+ * deliberately stripped on rehydrate - it must be given in the session that
  * submits, not inherited from an earlier one.
  */
 export const useFinancingStore = create<FinancingState>()(

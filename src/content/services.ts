@@ -17,7 +17,7 @@ export const services: DraftService[] = [
     shortDescription:
       "Working capital and growth financing for small and medium enterprises, arranged through Garnet's banking and financing partners.",
     overview: [
-      "Most small and medium businesses do not fail for lack of demand. They run short of working capital at the wrong moment, or they reach a growth step — a second branch, a bigger order, a new line — that their cash flow cannot fund on its own.",
+      "Most small and medium businesses do not fail for lack of demand. They run short of working capital at the wrong moment, or they reach a growth step (a second branch, a bigger order, a new line) that their cash flow cannot fund on its own.",
       "Garnet works on the request before it goes anywhere near a financier: understanding the business, testing what it can carry, and structuring the ask into something a bank or financing partner can underwrite. The engagement then continues through documentation, approval and repayment coordination.",
     ],
     garnetRole:
@@ -36,7 +36,7 @@ export const services: DraftService[] = [
       {
         title: "Repayment structuring",
         description:
-          "Advisory support in negotiating repayment schedules aligned to the client's cash-flow cycle — which matters most for seasonal businesses.",
+          "Advisory support in negotiating repayment schedules aligned to the client's cash-flow cycle, which matters most for seasonal businesses.",
       },
       {
         title: "International and offshore project financing",
@@ -60,7 +60,7 @@ export const services: DraftService[] = [
     relatedIndustries: ["manufacturing", "agriculture", "retail-fmcg", "construction", "import-export"],
     relatedSolutions: ["smes", "corporates"],
     imageBrief:
-      "An owner-operated Kenyan business at work — a workshop floor, a distribution operation, a production line. Real staff, real premises, editorial rather than posed.",
+      "An owner-operated Kenyan business at work: a workshop floor, a distribution operation, a production line. Real staff, real premises, editorial rather than posed.",
   },
   {
     title: "Asset & Equipment Financing",
@@ -104,7 +104,7 @@ export const services: DraftService[] = [
     relatedIndustries: ["manufacturing", "construction", "agriculture", "import-export"],
     relatedSolutions: ["smes", "corporates", "individuals"],
     imageBrief:
-      "Commercial vehicles or production machinery in active use — a fleet yard, a plant floor. Equipment working, not showroom stock.",
+      "Commercial vehicles or production machinery in active use: a fleet yard, a plant floor. Equipment working, not showroom stock.",
   },
   {
     title: "Trade Finance & Invoice Discounting",
@@ -114,7 +114,7 @@ export const services: DraftService[] = [
       "Short-term financing that unlocks cash tied up in trade transactions, unpaid invoices and confirmed orders.",
     overview: [
       "A confirmed order and an unpaid invoice are both assets. Neither pays salaries. For businesses supplying larger buyers on credit terms, the gap between delivering and being paid is the single most common cash-flow constraint.",
-      "Garnet facilitates the short-term financing that closes that gap — against invoices, against confirmed local purchase orders, and across import and export transactions where suppliers need paying before goods arrive.",
+      "Garnet facilitates the short-term financing that closes that gap: against invoices, against confirmed local purchase orders, and across import and export transactions where suppliers need paying before goods arrive.",
     ],
     garnetRole:
       "Garnet arranges these facilities through its trade-finance and financing partners. It does not advance funds itself; it structures the transaction and facilitates it with the institution providing the facility.",
@@ -145,7 +145,7 @@ export const services: DraftService[] = [
     relatedIndustries: ["import-export", "retail-fmcg", "manufacturing", "agriculture"],
     relatedSolutions: ["smes", "corporates"],
     imageBrief:
-      "Trade in motion — cargo handling, containers, a warehouse dispatch bay. Goods and documentation, the physical side of a financed transaction.",
+      "Trade in motion: cargo handling, containers, a warehouse dispatch bay. Goods and documentation, the physical side of a financed transaction.",
   },
   {
     title: "Personal & Consumer Financing",
@@ -155,10 +155,10 @@ export const services: DraftService[] = [
       "Financing for individual clients, facilitated through Garnet's partner institutions.",
     overview: [
       "Individuals come to Garnet with the same underlying problem businesses do: a need that arrives ahead of the funds, and a set of financing options that is hard to compare from the outside.",
-      "Garnet assesses the requirement, structures it, and arranges it with a partner institution — with the same due diligence and end-to-end guidance applied to its business engagements.",
+      "Garnet assesses the requirement, structures it, and arranges it with a partner institution, with the same due diligence and end-to-end guidance applied to its business engagements.",
     ],
     garnetRole:
-      "Garnet facilitates personal financing through partner institutions. It is not a lender, and this is not a loan application — it is a structured introduction to a financier, guided through to approval.",
+      "Garnet facilitates personal financing through partner institutions. It is not a lender, and this is not a loan application: it is a structured introduction to a financier, guided through to approval.",
     capabilities: [
       {
         title: "Personal financing",
@@ -180,7 +180,7 @@ export const services: DraftService[] = [
     relatedIndustries: [],
     relatedSolutions: ["individuals"],
     imageBrief:
-      "A considered personal-finance moment in a Kenyan setting — an advisory conversation, a vehicle handover. Warm and specific, never a stock family stock photo.",
+      "A considered personal-finance moment in a Kenyan setting: an advisory conversation, a vehicle handover. Warm and specific, never a stock family stock photo.",
   },
   {
     title: "Structured & Fixed-Income Investment",
@@ -216,7 +216,7 @@ export const services: DraftService[] = [
     relatedIndustries: ["construction"],
     relatedSolutions: ["corporates", "individuals"],
     imageBrief:
-      "Commercial property or an institutional setting — a completed development, a considered interior. Restrained and architectural, not aspirational-luxury.",
+      "Commercial property or an institutional setting: a completed development, a considered interior. Restrained and architectural, not aspirational-luxury.",
     requiresApproval: true,
   },
   {
@@ -227,7 +227,7 @@ export const services: DraftService[] = [
       "Direct participation using Garnet's own capital in qualifying projects and business ventures.",
     overview: [
       "Some opportunities need a partner willing to take a position rather than arrange one. Garnet participates directly in vetted commercial and infrastructure-adjacent projects, and structures equity or quasi-equity arrangements for growing businesses.",
-      "Capital is committed only after a due diligence review of viability, financials and risk. Where a project also needs facilitated debt or logistics coordination, those sit alongside — but the investment decision is Garnet's own.",
+      "Capital is committed only after a due diligence review of viability, financials and risk. Where a project also needs facilitated debt or logistics coordination, those sit alongside, but the investment decision is Garnet's own.",
     ],
     garnetRole:
       "This is proprietary investment. Garnet commits its own funds after its own due diligence. It is distinct from the financing services, where Garnet arranges capital from partner institutions and lends nothing itself.",
@@ -251,14 +251,14 @@ export const services: DraftService[] = [
     process: [
       { title: "Review", description: "Assess the project or venture against Garnet's investment criteria." },
       { title: "Diligence", description: "Examine viability, financials and risk before anything is committed." },
-      { title: "Structure", description: "Agree the form of participation — equity, quasi-equity or project stake." },
+      { title: "Structure", description: "Agree the form of participation: equity, quasi-equity or project stake." },
       { title: "Commit", description: "Deploy Garnet's own capital." },
       { title: "Monitor", description: "Track the position and report on it in-house." },
     ],
     relatedIndustries: ["construction", "manufacturing", "agriculture"],
     relatedSolutions: ["corporates"],
     imageBrief:
-      "A project under way — construction, infrastructure, industrial build-out. Scale and progress, shot with an infrastructure-publication eye.",
+      "A project under way: construction, infrastructure, industrial build-out. Scale and progress, shot with an infrastructure-publication eye.",
     requiresApproval: true,
   },
   {
@@ -268,7 +268,7 @@ export const services: DraftService[] = [
     shortDescription:
       "Freight, warehousing and distribution support for clients moving goods within and beyond Nairobi.",
     overview: [
-      "Financing a consignment and moving it are usually two conversations with two suppliers. Garnet's logistics services exist so they can be one — freight and distribution assistance that runs alongside a financed trade transaction or an equipment purchase rather than separately from it.",
+      "Financing a consignment and moving it are usually two conversations with two suppliers. Garnet's logistics services exist so they can be one: freight and distribution assistance that runs alongside a financed trade transaction or an equipment purchase rather than separately from it.",
       "The service is also available on its own, for clients who need goods moved and stored dependably.",
     ],
     garnetRole:
@@ -293,7 +293,7 @@ export const services: DraftService[] = [
     relatedIndustries: ["import-export", "retail-fmcg", "manufacturing", "agriculture"],
     relatedSolutions: ["smes", "corporates"],
     imageBrief:
-      "A Kenyan logistics corridor or warehouse operation — trucks loading, palletised goods, a dispatch yard at work.",
+      "A Kenyan logistics corridor or warehouse operation: trucks loading, palletised goods, a dispatch yard at work.",
   },
 ];
 

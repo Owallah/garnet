@@ -1,5 +1,5 @@
 /**
- * LEGAL SCAFFOLDING — NOT LEGAL ADVICE, NOT READY TO PUBLISH.
+ * LEGAL SCAFFOLDING - NOT LEGAL ADVICE, NOT READY TO PUBLISH.
  *
  * These two documents are a structure for Garnet's lawyer to complete, built
  * around what the site actually does: it collects names, contact details,
@@ -11,7 +11,7 @@
  * Everything wrapped in [SQUARE BRACKETS] is a decision the client or their
  * counsel must make. The page refuses to render any section that still
  * contains a bracket in production, so an unfinished document cannot go live
- * by accident — see `hasUnresolvedGaps` below.
+ * by accident - see `hasUnresolvedGaps` below.
  *
  * Specific items to raise with counsel:
  *   1. ODPC registration. Kenya's Office of the Data Protection Commissioner
@@ -21,7 +21,7 @@
  *   2. Data Protection Officer. Confirm whether one is required and who it is.
  *   3. Retention periods. How long an unsuccessful enquiry is kept.
  *   4. Onward transfer. Naming financing partners, or describing them by
- *      category, and whether any sit outside Kenya — offshore financiers
+ *      category, and whether any sit outside Kenya - offshore financiers
  *      would make this a cross-border transfer with its own requirements.
  *   5. Whether Garnet is a licensed entity of any kind. The site currently
  *      claims no licence, which is the safe position unless one exists.
@@ -58,7 +58,7 @@ export const privacyPolicy: LegalDocument = {
   lastUpdated: "[DATE OF PUBLICATION]",
   intro: [
     "This policy explains what Garnet Solutions Limited does with personal data collected through this website, and what rights you have over it under the Data Protection Act 2019.",
-    "It covers this website only. It does not cover what a financing partner does with your details once a request has been passed to them — those institutions are separate data controllers with their own policies.",
+    "It covers this website only. It does not cover what a financing partner does with your details once a request has been passed to them. Those institutions are separate data controllers with their own policies.",
   ],
   sections: [
     {
@@ -98,19 +98,19 @@ export const privacyPolicy: LegalDocument = {
         "Under section 30 of the Data Protection Act 2019, processing must have a lawful basis. Ours are:",
       ],
       list: [
-        "Consent — you tick a box before submitting any form, and you can withdraw that consent at any time by contacting us. Withdrawing it does not affect anything done before you withdrew it.",
-        "Steps taken at your request before entering into a contract — assessing your requirement, structuring it, and approaching financing partners on your behalf is the thing you asked us to do.",
-        "Our legitimate interests — keeping this website secure and preventing automated abuse, in a way that does not override your rights.",
+        "Consent: you tick a box before submitting any form, and you can withdraw that consent at any time by contacting us. Withdrawing it does not affect anything done before you withdrew it.",
+        "Steps taken at your request before entering into a contract: assessing your requirement, structuring it, and approaching financing partners on your behalf is the thing you asked us to do.",
+        "Our legitimate interests: keeping this website secure and preventing automated abuse, in a way that does not override your rights.",
       ],
     },
     {
       heading: "Who we share it with",
       body: [
         "To do what you have asked, we share the details of a financing request with the partner institutions we believe are best suited to it. We share only what is necessary for that institution to assess the request.",
-        "[DESCRIBE THE CATEGORIES OF PARTNER — BANKS, ASSET-FINANCE PROVIDERS, TRADE-FINANCE PROVIDERS, INSURERS — AND CONFIRM WHETHER ANY ARE TO BE NAMED.]",
+        "[DESCRIBE THE CATEGORIES OF PARTNER: BANKS, ASSET-FINANCE PROVIDERS, TRADE-FINANCE PROVIDERS, INSURERS. CONFIRM WHETHER ANY ARE TO BE NAMED.]",
         "[CONFIRM WHETHER ANY PARTNER IS LOCATED OUTSIDE KENYA. OFFSHORE AND INTERNATIONAL FINANCIERS WOULD MAKE THIS A CROSS-BORDER TRANSFER, WHICH REQUIRES ITS OWN BASIS UNDER PART VI OF THE ACT AND MUST BE DESCRIBED HERE.]",
         "We also use service providers to run the website and send email on our behalf. They process data only on our instructions.",
-        "[LIST THE PROCESSORS ACTUALLY USED — HOSTING, EMAIL DELIVERY, CONTENT MANAGEMENT — AND WHERE EACH STORES DATA.]",
+        "[LIST THE PROCESSORS ACTUALLY USED: HOSTING, EMAIL DELIVERY, CONTENT MANAGEMENT. STATE WHERE EACH STORES DATA.]",
         "We do not sell personal data, and we do not share it for anyone else's marketing.",
       ],
     },
@@ -154,7 +154,7 @@ export const termsAndConditions: LegalDocument = {
   title: "Terms and conditions",
   lastUpdated: "[DATE OF PUBLICATION]",
   intro: [
-    "These terms govern your use of this website. They are not the terms of any financing, investment or logistics engagement — those are agreed separately and in writing.",
+    "These terms govern your use of this website. They are not the terms of any financing, investment or logistics engagement. Those are agreed separately and in writing.",
   ],
   sections: [
     {

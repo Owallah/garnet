@@ -6,7 +6,7 @@ import { industries } from "@/content/industries";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "Manufacturing, agriculture, retail and FMCG, construction, and import/export — the sectors Garnet works across in Kenya and East Africa.",
+    "The sectors Garnet works across in Kenya and East Africa: manufacturing, agriculture, retail and FMCG, construction, and import/export.",
   alternates: { canonical: "/industries" },
 };
 

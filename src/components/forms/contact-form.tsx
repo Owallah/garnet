@@ -66,7 +66,7 @@ export function ContactForm() {
       setStatus("sent");
       window.requestAnimationFrame(() => headingRef.current?.focus());
     } catch {
-      setFormMessage("That did not send — check your connection and try again.");
+      setFormMessage("That did not send. Check your connection and try again.");
       setStatus("failed");
     }
   }

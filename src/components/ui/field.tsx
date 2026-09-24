@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
  *
  * No `focus:outline-none` here. Tailwind utilities sit in a later cascade layer
  * than the base stylesheet, so that one utility cancelled the global
- * `:focus-visible` ring entirely — leaving a 1px border change that measures
+ * `:focus-visible` ring entirely - leaving a 1px border change that measures
  * 2.0:1 in dark mode. The ring and the border now work together.
  */
 const controlBase =

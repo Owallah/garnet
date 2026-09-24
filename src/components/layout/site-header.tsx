@@ -135,7 +135,7 @@ export function SiteHeader() {
       </a>
 
       <div className="shell flex h-18 items-center justify-between gap-6">
-        <Link href="/" className="shrink-0" aria-label="Garnet Solutions — home">
+        <Link href="/" className="shrink-0" aria-label="Garnet Solutions home">
           <Image
             src="/logo-garnet.png"
             alt="Garnet Solutions"

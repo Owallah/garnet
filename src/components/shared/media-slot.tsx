@@ -29,7 +29,7 @@ const ratioClass: Record<NonNullable<MediaSlotProps["ratio"]>, string> = {
 /**
  * Resolution order: CMS image, then a licensed local file from the manifest,
  * then an honest labelled placeholder carrying the brief. Never a decorative
- * gradient standing in for a photograph — a placeholder that looks designed
+ * gradient standing in for a photograph - a placeholder that looks designed
  * stops anyone from noticing the photograph is missing.
  */
 export function MediaSlot({

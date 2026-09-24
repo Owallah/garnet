@@ -2,7 +2,7 @@
  * Shown while a route segment is still resolving.
  *
  * Most pages here are prerendered, so this rarely appears on a fast
- * connection — which is the point. It exists for the cases that do wait: an
+ * connection - which is the point. It exists for the cases that do wait: an
  * opportunity page hitting Sanity, or a slow network where a tapped nav item
  * would otherwise do nothing visible at all.
  *

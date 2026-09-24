@@ -1,13 +1,13 @@
 import type { DraftIndustry } from "./types";
 
 /**
- * IMPORTANT — every entry here is marked `requiresApproval`.
+ * IMPORTANT - every entry here is marked `requiresApproval`.
  *
  * The company profile names these five sectors but says nothing about how
  * Garnet works within each one. The sector characteristics below are general
  * and uncontroversial (harvest cycles, retainage, credit terms), and none of
  * them claims a Garnet track record, client, deal or specialism. Even so, the
- * client should confirm each page before launch — a sector page that overstates
+ * client should confirm each page before launch - a sector page that overstates
  * familiarity is the easiest way to lose credibility with a prospect who works
  * in it.
  */
@@ -19,7 +19,7 @@ export const industries: DraftIndustry[] = [
       "Capital equipment, raw-material cycles and the working capital that sits between production and payment.",
     overview: [
       "Manufacturing ties up capital in two places at once: in the machinery that produces, and in the raw materials and finished stock waiting to convert. Both compete for the same cash.",
-      "Garnet facilitates asset financing for production equipment, working capital for the input cycle, and trade facilities where inputs are imported — with logistics available for inbound materials and outbound distribution.",
+      "Garnet facilitates asset financing for production equipment, working capital for the input cycle, and trade facilities where inputs are imported, with logistics available for inbound materials and outbound distribution.",
     ],
     challenges: [
       { title: "Equipment that outlasts the cash to buy it", description: "Production machinery earns over years but is paid for at once unless it is financed against the asset." },
@@ -32,7 +32,7 @@ export const industries: DraftIndustry[] = [
       "trade-finance-invoice-discounting",
       "logistics",
     ],
-    imageBrief: "A working production floor in Kenya — machinery, operators, materials in process.",
+    imageBrief: "A working production floor in Kenya: machinery, operators, materials in process.",
     requiresApproval: true,
   },
   {
@@ -56,7 +56,7 @@ export const industries: DraftIndustry[] = [
       "trade-finance-invoice-discounting",
     ],
     imageBrief:
-      "Kenyan agricultural operations at commercial scale — harvest handling, grading, produce being loaded. Working agriculture, not a landscape.",
+      "Kenyan agricultural operations at commercial scale: harvest handling, grading, produce being loaded. Working agriculture, not a landscape.",
     requiresApproval: true,
   },
   {
@@ -64,7 +64,7 @@ export const industries: DraftIndustry[] = [
     slug: "retail-fmcg",
     description: "Stock, shelf space, credit terms and distribution across many delivery points.",
     overview: [
-      "Fast-moving goods businesses live on turnover, and turnover needs stock. Supplying larger retailers usually means extending credit terms and waiting — while the next order still has to be funded.",
+      "Fast-moving goods businesses live on turnover, and turnover needs stock. Supplying larger retailers usually means extending credit terms and waiting, while the next order still has to be funded.",
       "Garnet facilitates working capital and invoice discounting against confirmed receivables, arranges LPO financing for confirmed orders, and supports distribution across delivery points.",
     ],
     challenges: [
@@ -79,7 +79,7 @@ export const industries: DraftIndustry[] = [
       "asset-equipment-financing",
     ],
     imageBrief:
-      "Distribution or retail supply in Kenya — a wholesale depot, goods being loaded for delivery, stocked shelves in a commercial setting.",
+      "Distribution or retail supply in Kenya: a wholesale depot, goods being loaded for delivery, stocked shelves in a commercial setting.",
     requiresApproval: true,
   },
   {
@@ -88,7 +88,7 @@ export const industries: DraftIndustry[] = [
     description: "Project-length timelines, staged payments, plant and equipment.",
     overview: [
       "Construction runs on certified stages and retained payments, so cost is incurred long before it is recovered. Plant and equipment add a second capital demand on top.",
-      "Garnet facilitates project and working-capital financing structured to certification stages, arranges equipment finance, and — where a project qualifies — sources large-scale financing from offshore and international financiers. Garnet may also participate directly in qualifying projects using its own capital.",
+      "Garnet facilitates project and working-capital financing structured to certification stages, arranges equipment finance, and sources large-scale financing from offshore and international financiers where a project qualifies. Garnet may also participate directly in qualifying projects using its own capital.",
     ],
     challenges: [
       { title: "Payment lags the work", description: "Certification and retention hold cash after the cost has already been incurred." },
@@ -102,7 +102,7 @@ export const industries: DraftIndustry[] = [
       "logistics",
     ],
     imageBrief:
-      "An active Kenyan construction or infrastructure site — structure taking shape, plant in use. Architectural framing.",
+      "An active Kenyan construction or infrastructure site: structure taking shape, plant in use. Architectural framing.",
     requiresApproval: true,
   },
   {
@@ -125,7 +125,7 @@ export const industries: DraftIndustry[] = [
       "asset-equipment-financing",
     ],
     imageBrief:
-      "Import/export infrastructure serving Kenya — container handling, a freight corridor, cargo being cleared or loaded.",
+      "Import/export infrastructure serving Kenya: container handling, a freight corridor, cargo being cleared or loaded.",
     requiresApproval: true,
   },
 ];

@@ -7,7 +7,7 @@ import { Section } from "@/components/shared/section";
 /**
  * Catches runtime errors in any marketing route. Rendering inside the
  * marketing layout means the header and footer survive, so a failure looks
- * like one broken section rather than a broken site — and the visitor still
+ * like one broken section rather than a broken site - and the visitor still
  * has navigation and a way to contact us.
  */
 export default function MarketingError({
@@ -30,7 +30,7 @@ export default function MarketingError({
           This page didn&apos;t load properly
         </h1>
         <p className="mt-6 text-lg text-muted">
-          The problem is on our side, not yours. Try again — and if it keeps happening, tell us and
+          The problem is on our side, not yours. Try again, and if it keeps happening, tell us and
           we will look into it.
         </p>
 
@@ -48,7 +48,7 @@ export default function MarketingError({
 
         {/* The digest identifies this error in the server logs. The message
             itself is withheld in production, so this is the only handle
-            support has — and it is safe to show, being an opaque hash. */}
+            support has - and it is safe to show, being an opaque hash. */}
         {error.digest ? (
           <p className="mt-10 text-sm text-muted">
             Reference: <span className="text-body">{error.digest}</span>

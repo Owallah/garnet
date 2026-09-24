@@ -5,7 +5,7 @@ import type { DraftFaq } from "./types";
  *
  * The first entry is the one the technical specification calls out as
  * critical. It is deliberately the first question in the financing category
- * and should stay there — it is the single most likely misunderstanding a
+ * and should stay there - it is the single most likely misunderstanding a
  * visitor arrives with.
  */
 export const faqs: DraftFaq[] = [
@@ -14,7 +14,7 @@ export const faqs: DraftFaq[] = [
     category: "financing",
     answer: [
       "No. Garnet does not lend from its own balance sheet for client financing needs.",
-      "It assesses and structures a financing requirement, then facilitates it with its banking, asset-finance and trade-finance partners — including offshore and international financiers for qualifying large-scale projects — and guides the engagement through to approval and repayment coordination.",
+      "It assesses and structures a financing requirement, then facilitates it with its banking, asset-finance and trade-finance partners (including offshore and international financiers for qualifying large-scale projects), and guides the engagement through to approval and repayment coordination.",
       "Garnet's own capital is used separately, for its proprietary investment activity in qualifying projects, ventures and structured instruments.",
     ],
   },
@@ -23,7 +23,7 @@ export const faqs: DraftFaq[] = [
     category: "general",
     answer: [
       "They use different money. Financing services arrange capital from partner institutions on a client's behalf; Garnet lends nothing itself.",
-      "Investment activity is proprietary — Garnet commits its own capital, after its own due diligence, into projects, ventures and structured instruments.",
+      "Investment activity is proprietary: Garnet commits its own capital, after its own due diligence, into projects, ventures and structured instruments.",
     ],
   },
   {
@@ -78,7 +78,7 @@ export const faqs: DraftFaq[] = [
     question: "Can I invest through Garnet?",
     category: "investment",
     answer: [
-      "Garnet's investment activity is proprietary — it deploys its own capital into qualifying projects, ventures and structured instruments, and also sources property-based opportunities in partnership with real-estate and financing partners.",
+      "Garnet's investment activity is proprietary: it deploys its own capital into qualifying projects, ventures and structured instruments, and also sources property-based opportunities in partnership with real-estate and financing partners.",
       "Where co-investment opportunities are available, they are published individually with their own risk disclosure. Nothing on this website is an offer, solicitation or recommendation to invest, and no return is promised or implied.",
     ],
   },

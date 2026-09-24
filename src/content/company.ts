@@ -31,7 +31,7 @@ export const values: Feature[] = [
   {
     title: "Innovation",
     description:
-      "Where a conventional route does not fit, we look for one that does — including offshore financing for projects that need it.",
+      "Where a conventional route does not fit, we look for one that does, including offshore financing for projects that need it.",
   },
   {
     title: "Professionalism",
@@ -40,7 +40,7 @@ export const values: Feature[] = [
   },
 ];
 
-/** Section 2 of the profile — Garnet's role as a partner. */
+/** Section 2 of the profile - Garnet's role as a partner. */
 export const partnerRole: Feature[] = [
   {
     title: "Facilitation and structuring",
@@ -50,7 +50,7 @@ export const partnerRole: Feature[] = [
   {
     title: "Advisory support",
     description:
-      "Every financing engagement is guided end to end — from initial assessment and documentation through to facility approval with partner institutions and ongoing repayment coordination — rather than left to the client to navigate alone.",
+      "Every financing engagement is guided end to end (from initial assessment and documentation through to facility approval with partner institutions and ongoing repayment coordination) rather than left to the client to navigate alone.",
   },
   {
     title: "Proprietary investment",
@@ -71,7 +71,7 @@ export const partnerRole: Feature[] = [
 
 /**
  * Section 6 of the profile supplies the first three of these. The last two are
- * drawn from section 2 rather than invented — the supplied profile appears to
+ * drawn from section 2 rather than invented - the supplied profile appears to
  * be truncated mid-section, so confirm with the client whether further
  * differentiators exist.
  */
@@ -79,7 +79,7 @@ export const differentiators: Feature[] = [
   {
     title: "Integrated financing and investment ecosystem",
     description:
-      "Financing facilitation — including access to offshore project capital — sits alongside proprietary investment under one roof, with logistics support where it is needed. One partner instead of several, and capital that moves in step with operations.",
+      "Financing facilitation, including access to offshore project capital, sits alongside proprietary investment under one roof, with logistics support where it is needed. One partner instead of several, and capital that moves in step with operations.",
   },
   {
     title: "Deep local rooting and longevity",
@@ -113,7 +113,7 @@ export const method: Feature[] = [
   {
     title: "Structure",
     description:
-      "Shape the request into a form a financier can underwrite — terms, security, repayment profile and the documentation that supports it.",
+      "Shape the request into a form a financier can underwrite: terms, security, repayment profile and the documentation that supports it.",
   },
   {
     title: "Connect",
@@ -148,7 +148,7 @@ export const industriesServed = [
 
 /**
  * Leadership, from section 5 of the profile. Photos and LinkedIn URLs are
- * still outstanding — the team page renders initials until they arrive.
+ * still outstanding - the team page renders initials until they arrive.
  */
 export const leadership: DraftPerson[] = [
   {
@@ -190,5 +190,5 @@ export const leadership: DraftPerson[] = [
 
 export const companyOverview = [
   "Garnet Solutions Limited is a Kenyan-registered company incorporated in 2015 and headquartered in Nairobi. It was established to provide integrated financing, investment and general logistics services to small and medium enterprises, corporate organisations and individuals across the region.",
-  "Bringing financing facilitation, structured investment and logistics support under one roof lets Garnet act as a single partner for businesses and individuals who need both access to capital and reliable movement of goods — two problems that are usually solved separately, and rarely in step with each other.",
+  "Bringing financing facilitation, structured investment and logistics support under one roof lets Garnet act as a single partner for businesses and individuals who need both access to capital and reliable movement of goods: two problems that are usually solved separately, and rarely in step with each other.",
 ];

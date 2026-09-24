@@ -21,7 +21,7 @@
 }
 
 /* =========================================================================
-   GARNET SOLUTIONS — DESIGN TOKENS
+   GARNET SOLUTIONS - DESIGN TOKENS
    Single source of truth. Components must not hard-code hex values,
    font sizes, spacing or timings. If a value is needed and missing,
    add it here first.
@@ -31,7 +31,7 @@
   /* ---------------------------------------------------------------------
      COLOUR
      Brand: #8D0130 (garnet-700) and #280000 (oxblood-900), sampled from the
-     supplied logo. Note: garnet-700 on oxblood-900 is 2.0:1 — never use the
+     supplied logo. Note: garnet-700 on oxblood-900 is 2.0:1 - never use the
      brand colour for text or icons on the dark ground. Use limestone or
      brass instead.
      --------------------------------------------------------------------- */
@@ -41,19 +41,19 @@
   --color-garnet-200: #e2b8c5;
   --color-garnet-300: #cd8a9f;
   --color-garnet-500: #a81b45;
-  --color-garnet-700: #8d0130; /* PRIMARY BRAND — logo mark */
+  --color-garnet-700: #8d0130; /* PRIMARY BRAND - logo mark */
   --color-garnet-800: #6b0125;
   --color-garnet-900: #4a0019;
 
   --color-oxblood-700: #4a1a1a; /* hairlines on dark */
   --color-oxblood-800: #3a0d0d; /* raised surface on dark */
-  --color-oxblood-900: #280000; /* SECONDARY BRAND — logo wordmark */
+  --color-oxblood-900: #280000; /* SECONDARY BRAND - logo wordmark */
   --color-oxblood-950: #1a0000;
 
   /* Warm mid-stone ground. The page sits at limestone-50; surfaces rise
      above it at --color-surface-raised and recede below it at
      --color-surface-sunken. Relief only reads because the ground is a mid
-     tone — on a near-white page the highlight edge has nothing to show
+     tone - on a near-white page the highlight edge has nothing to show
      against. Body text holds at 9.9:1 here and garnet at 7.6:1. */
   --color-surface-raised: #f2ede7;
   --color-limestone-50: #eae4dd; /* PAGE GROUND */
@@ -71,7 +71,7 @@
 
      Components reference these, never the raw palette, for anything that has
      to survive a theme change: grounds, ink and rules. The palette above
-     stays fixed — garnet is garnet in both themes — and only these eleven
+     stays fixed - garnet is garnet in both themes - and only these eleven
      values flip under .dark. That is why there is not a single `dark:`
      variant in the components.
 
@@ -114,7 +114,7 @@
      TYPOGRAPHY
      --------------------------------------------------------------------- */
   /* One family across the whole site. Display and body are separated by
-     weight, size and tracking rather than by a second typeface — with a
+     weight, size and tracking rather than by a second typeface - with a
      grotesk this reads as deliberate; mixing in a serif would fight it. */
   --font-sans: var(--font-kind-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-kind-sans), ui-sans-serif, system-ui, sans-serif;
@@ -184,7 +184,7 @@
      RELIEF
      Two shadows per surface: a warm cast down-right, a near-white highlight
      up-left, as if lit from a single window at the top left. Light comes
-     from one direction on every surface on the site — reversing it on one
+     from one direction on every surface on the site - reversing it on one
      element is what makes soft UI look broken rather than moulded.
 
      Relief is decoration. It never carries meaning on its own: every raised
@@ -198,7 +198,7 @@
   --shadow-well: inset 4px 4px 9px rgba(88, 60, 42, 0.15), inset -4px -4px 9px rgba(255, 253, 250, 0.9);
 
   /* On oxblood the same idea, with the cast reading as depth rather than
-     shade — dark grounds carry relief far more easily than light ones. */
+     shade - dark grounds carry relief far more easily than light ones. */
   --shadow-relief-dark: 7px 7px 16px rgba(0, 0, 0, 0.5), -5px -5px 13px rgba(122, 62, 62, 0.16);
   --shadow-pressed-dark: inset 3px 3px 8px rgba(0, 0, 0, 0.55), inset -2px -2px 6px rgba(122, 62, 62, 0.14);
 
@@ -226,7 +226,7 @@
    ink already reads from a semantic token.
 
    The ground is a warm near-black carrying the garnet undertone rather than a
-   neutral grey — a cold grey next to #8D0130 makes the brand colour look
+   neutral grey - a cold grey next to #8D0130 makes the brand colour look
    muddy. Contrast on this ground: body 13.4:1, muted 7.0:1, accent 6.8:1,
    control borders 4.8:1.
    ========================================================================= */
@@ -430,7 +430,7 @@
      THE GARNET CORNER
      Taken from the logo mark, whose silhouette rounds the top-left and
      bottom-right corners and leaves the other two square. Reserved for
-     signature surfaces — the hero image, the process diagram, the closing
+     signature surfaces - the hero image, the process diagram, the closing
      panel. Using it on every card would spend the device.
      --------------------------------------------------------------------- */
   .corner-brand {
@@ -447,7 +447,7 @@
      RELIEF UTILITIES
 
      Applied to panels, cards, controls and interactive surfaces only.
-     Editorial areas, the process diagram and body typography stay flat —
+     Editorial areas, the process diagram and body typography stay flat -
      relief that appears everywhere stops registering as anything.
      --------------------------------------------------------------------- */
   .relief {
@@ -476,7 +476,7 @@
   }
 
   /* Anything clickable. Lifts a little on hover, and genuinely presses on
-     activation — the press is the whole point of a tactile surface, and a
+     activation - the press is the whole point of a tactile surface, and a
      hover-only version feels like a picture of a button. */
   .relief-interactive {
     transition:
@@ -519,7 +519,7 @@
 
      The tick and the chevron live here rather than in a Tailwind arbitrary
      value. Arbitrary values cannot contain spaces, and an inline SVG is full
-     of them — the class silently splits into junk tokens and no rule is ever
+     of them - the class silently splits into junk tokens and no rule is ever
      generated. Plain CSS also lets the chevron follow the theme.
      --------------------------------------------------------------------- */
   .control-check:checked {
@@ -553,7 +553,7 @@
      ACCORDION
 
      `list-none` alone does not remove the disclosure triangle in Safari, and
-     without a replacement mark an FAQ row reads as a paragraph of body text —
+     without a replacement mark an FAQ row reads as a paragraph of body text -
      26 of them across the FAQ and service pages, none of which looked
      expandable.
 
@@ -627,7 +627,7 @@
     transition: transform var(--duration-fast) var(--ease-entrance);
   }
 
-  /* Focus is never gated — a keyboard user needs this on every device. */
+  /* Focus is never gated - a keyboard user needs this on every device. */
   .link-draw:focus-visible::after {
     transform: scaleX(1);
   }
@@ -676,14 +676,14 @@
 }
 
 /* =========================================================================
-   MOTION SAFETY — non-negotiable, applies to CSS and JS-driven animation
+   MOTION SAFETY - non-negotiable, applies to CSS and JS-driven animation
    ========================================================================= */
 
 /* Reduced motion is a vestibular accommodation, not a request for a static
    page. Movement goes; the feedback that tells you the interface heard you
    stays. The previous blanket `transition-duration: 0.01ms` removed colour and
    opacity transitions too, so these users got *less* state feedback than
-   everyone else — the wrong trade.
+   everyone else - the wrong trade.
 
    JS-driven motion is handled separately by `useReducedMotion()` in
    motion/react, which every animated component already checks. */

@@ -31,14 +31,14 @@ type Props = {
  *    does exactly what they expect it to.
  *
  * 2. Text never fades. Dimming inactive steps to 30% opacity is the standard
- *    way to build this and it drops body copy below 4.5:1 — so inactive steps
+ *    way to build this and it drops body copy below 4.5:1 - so inactive steps
  *    keep graphite-muted (4.8:1 on the stone ground) and the active one gains
  *    a garnet rule and darker ink. The motion is carried by the indicator and
  *    the sticky panel, not by making the content unreadable.
  *
  * 3. The static version is the real version. Below the large breakpoint, and
  *    for anyone with reduced motion, this is a plain heading followed by a
- *    list — no collapsed layout, nothing hidden, nothing that needed the
+ *    list - no collapsed layout, nothing hidden, nothing that needed the
  *    animation to make sense.
  */
 export function StickyNarrative({
@@ -74,7 +74,7 @@ export function StickyNarrative({
             ) : null}
 
             {/* Progress. The ascending bars from the logo mark, filling as the
-                reader moves down the column. Decorative — the list beneath
+                reader moves down the column. Decorative - the list beneath
                 carries the same information in text. */}
             <div aria-hidden className="mt-10 hidden items-end gap-2 md:flex">
               {steps.map((step, index) => (
@@ -108,7 +108,7 @@ export function StickyNarrative({
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   className={cn("text-sm", dark ? "text-brass" : "text-accent")}
                 >
-                  {numbered ? `${active + 1} of ${steps.length} — ` : ""}
+                  {numbered ? `${active + 1} of ${steps.length} · ` : ""}
                   {steps[active]?.title}
                 </motion.p>
               </AnimatePresence>

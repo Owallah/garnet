@@ -9,7 +9,7 @@ type SectionProps = React.HTMLAttributes<HTMLElement> & {
 /**
  * Every top-level band on a page goes through here so vertical rhythm is
  * defined once. Tone switches the ground; components inside never branch on
- * theme themselves — `.on-dark` overrides the tokens they already use.
+ * theme themselves - `.on-dark` overrides the tokens they already use.
  */
 export function Section({
   tone = "light",

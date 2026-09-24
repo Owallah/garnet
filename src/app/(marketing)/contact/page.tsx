@@ -27,7 +27,7 @@ export default async function ContactPage() {
   /**
    * Contact rows render only where the client has supplied the detail. An
    * unconfirmed phone number or address is absent from the page rather than
-   * shown as a placeholder — publishing one Garnet has not given us is worse
+   * shown as a placeholder - publishing one Garnet has not given us is worse
    * than showing none.
    */
   const details = [
@@ -56,7 +56,7 @@ export default async function ContactPage() {
             Talk to the team in Nairobi
           </h1>
           <p className="mt-6 max-w-(--container-prose) text-lg text-muted">
-            Financing, investment or logistics — a short description of what you need is enough to
+            Financing, investment or logistics: a short description of what you need is enough to
             start.
           </p>
         </div>

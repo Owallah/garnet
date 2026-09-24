@@ -136,7 +136,7 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </Section>
 
-      {/* Scene 1 — capabilities. Unnumbered: they are a set, not an order. */}
+      {/* Scene 1 - capabilities. Unnumbered: they are a set, not an order. */}
       <StickyNarrative
         heading="What this covers"
         steps={service.capabilities.map((item) => ({
@@ -168,7 +168,7 @@ export default async function ServicePage({ params }: Props) {
         </Section>
       ) : null}
 
-      {/* Scene 2 — the process. Numbered, because a requirement moves
+      {/* Scene 2 - the process. Numbered, because a requirement moves
           through these in order. */}
       <StickyNarrative
         heading="How it works"

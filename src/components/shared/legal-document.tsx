@@ -7,7 +7,7 @@ import { hasUnresolvedGaps, type LegalDocument } from "@/content/legal";
  * production.
  *
  * The bracketed placeholders are useful to the client's lawyer and dangerous
- * to a visitor — a privacy policy that says [RETENTION PERIOD] is worse than
+ * to a visitor - a privacy policy that says [RETENTION PERIOD] is worse than
  * no policy, because it looks like a policy. In development the gaps show,
  * marked, so they can be worked through. In production the page states plainly
  * that the document is not yet published and points to the contact page.

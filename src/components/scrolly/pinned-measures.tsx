@@ -15,7 +15,7 @@ export type Measure = {
  * A pinned scene: the panel holds still while three measures extend across it.
  *
  * This is the one place scroll position drives animation directly, because
- * the thing being shown is an extent — something reaching further out — and
+ * the thing being shown is an extent - something reaching further out - and
  * tying that to how far the reader has travelled is the point.
  *
  * Pinning only happens at the large breakpoint. On a phone a sticky viewport

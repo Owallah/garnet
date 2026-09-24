@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const solution = await resolve(slug);
   if (!solution) return {};
   return {
-    title: solution.seo?.title ?? `${solution.title} — financing, investment and logistics`,
+    title: solution.seo?.title ?? `${solution.title} | financing, investment and logistics`,
     description: solution.seo?.description ?? solution.description,
     alternates: { canonical: `/solutions/${slug}` },
   };
@@ -84,7 +84,7 @@ export default async function SolutionPage({ params }: Props) {
         </div>
       </Section>
 
-      {/* Scene — what this audience actually arrives with. */}
+      {/* Scene - what this audience actually arrives with. */}
       <StickyNarrative
         heading="What we are usually asked for"
         steps={solution.painPoints.map((item) => ({

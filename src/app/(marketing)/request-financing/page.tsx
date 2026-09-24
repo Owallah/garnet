@@ -57,7 +57,7 @@ export default function RequestFinancingPage() {
               <h2 className="text-xl">What we do not ask for</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted">
                 No financial statements, no identity documents and no bank records at this stage.
-                Those are discussed directly once we understand the requirement — never uploaded to
+                Those are discussed directly once we understand the requirement, never uploaded to
                 a web form.
               </p>
             </div>

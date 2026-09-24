@@ -26,7 +26,7 @@ export type DraftService = {
   title: string;
   slug: string;
   category: ServiceCategory;
-  /** Under 220 characters — used in cards, meta descriptions and nav. */
+  /** Under 220 characters - used in cards, meta descriptions and nav. */
   shortDescription: string;
   overview: string[];
   /**

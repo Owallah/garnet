@@ -22,7 +22,7 @@ export const siteConfig = {
   // Confirmed in the company profile.
   email: "info@garnetsolutionsltd.com",
   website: "www.garnetsolutions.co.ke",
-  // Still outstanding — rendered only once supplied through Sanity.
+  // Still outstanding - rendered only once supplied through Sanity.
   contact: {
     phone: null as string | null,
     whatsapp: null as string | null,

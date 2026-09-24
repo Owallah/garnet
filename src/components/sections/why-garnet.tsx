@@ -2,7 +2,7 @@ import { Section } from "@/components/shared/section";
 import { differentiators } from "@/content/company";
 
 /**
- * A ledger: label column on the left, substance on the right. No numbers —
+ * A ledger: label column on the left, substance on the right. No numbers -
  * these five are not a sequence, and numbering them would imply an order
  * that does not exist.
  */

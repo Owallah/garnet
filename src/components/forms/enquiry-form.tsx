@@ -30,7 +30,7 @@ type Props = {
  *
  * Collects only what is needed to start a conversation: no financial position,
  * no documents, no identity data. Anything a real assessment requires is
- * discussed directly, not uploaded to a public form — which also keeps this
+ * discussed directly, not uploaded to a public form - which also keeps this
  * site clear of holding sensitive financial records.
  *
  * On an opportunity page the slug travels with the submission as a hidden
@@ -92,7 +92,7 @@ export function EnquiryForm({ opportunitySlug, opportunityTitle, defaultInterest
       setStatus("sent");
       window.requestAnimationFrame(() => confirmationRef.current?.focus());
     } catch {
-      setFormMessage("That did not send — check your connection and try again.");
+      setFormMessage("That did not send. Check your connection and try again.");
       setStatus("failed");
     }
   }

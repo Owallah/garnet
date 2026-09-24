@@ -3,7 +3,7 @@ import { consentField, emailField, honeypotField, nameField, phoneField } from "
 
 /**
  * Investment enquiry. Deliberately does not collect financial position,
- * documents or identity data — an enquiry only needs to start a conversation.
+ * documents or identity data - an enquiry only needs to start a conversation.
  */
 export const enquirySchema = z.object({
   fullName: nameField,

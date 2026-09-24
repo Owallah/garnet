@@ -9,7 +9,7 @@ import {
   phoneField,
 } from "./shared";
 
-/** Step 1 — what the enquiry is about. */
+/** Step 1 - what the enquiry is about. */
 export const financingStepOneSchema = z.object({
   financingNeed: z.enum(FINANCING_NEEDS, { message: "Choose a financing need" }),
   applicantType: z.enum(["sme", "corporate", "individual"], {
@@ -17,7 +17,7 @@ export const financingStepOneSchema = z.object({
   }),
 });
 
-/** Step 2 — who is asking. */
+/** Step 2 - who is asking. */
 export const financingStepTwoSchema = z.object({
   fullName: nameField,
   company: companyField,
@@ -28,7 +28,7 @@ export const financingStepTwoSchema = z.object({
 });
 
 /**
- * Step 3 — the request itself.
+ * Step 3 - the request itself.
  * Amount is a range band, not a free number: bands qualify an enquiry
  * without implying an offer, and they survive currency changes.
  */
@@ -41,7 +41,7 @@ export const financingStepThreeSchema = z.object({
   purpose: z
     .string()
     .trim()
-    .min(20, "Describe what the financing is for — at least 20 characters")
+    .min(20, "Describe what the financing is for (at least 20 characters)")
     .max(1200),
   timeline: z.enum(["immediate", "1-3-months", "3-6-months", "exploring"], {
     message: "Select a timeline",
@@ -49,7 +49,7 @@ export const financingStepThreeSchema = z.object({
   additionalInformation: z.string().trim().max(2000).optional().or(z.literal("")),
 });
 
-/** Step 4 — review and consent. */
+/** Step 4 - review and consent. */
 export const financingStepFourSchema = z.object({
   consent: consentField,
   website: honeypotField,

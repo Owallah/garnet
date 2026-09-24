@@ -37,7 +37,7 @@ export const companyField = z.string().trim().max(160).optional().or(z.literal("
 export const messageField = z
   .string()
   .trim()
-  .min(20, "Tell us a little more — at least 20 characters")
+  .min(20, "Tell us a little more (at least 20 characters)")
   .max(2000, "Please keep this under 2,000 characters");
 
 /** Honeypot: must stay empty. Bots fill every field they find. */

@@ -1,7 +1,7 @@
 import { ButtonLink } from "@/components/ui/button";
 
 /**
- * The closing panel carries the brand corner at full size — the same shape as
+ * The closing panel carries the brand corner at full size - the same shape as
  * the hero image, bracketing the page. It stays on the dark ground rather than
  * filling with garnet, because a filled garnet surface means Garnet's own
  * capital everywhere else on this page.

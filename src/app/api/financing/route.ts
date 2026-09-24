@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       await send({
         to: mailboxes.financing,
         replyTo: data.email,
-        subject: `Financing request — ${FINANCING_NEED_LABELS[data.financingNeed]} — ${data.fullName}`,
+        subject: `Financing request | ${FINANCING_NEED_LABELS[data.financingNeed]} | ${data.fullName}`,
         html: internalNotification({
           heading: "New financing request",
           intro: "Submitted through the request-financing form.",
@@ -55,13 +55,13 @@ export async function POST(request: Request) {
 
     await send({
       to: data.email,
-      subject: "Your financing request — Garnet Solutions",
+      subject: "Your financing request | Garnet Solutions",
       toName: data.fullName,
       html: acknowledgement({
         firstName: data.fullName.split(" ")[0],
         heading: "We have your request",
         body:
-          "A member of the team will review the details and come back to you. Garnet structures and facilitates financing through partner institutions — this enquiry is not an application to a lender and no offer is implied.",
+          "A member of the team will review the details and come back to you. Garnet structures and facilitates financing through partner institutions. This enquiry is not an application to a lender and no offer is implied.",
       }),
     });
 

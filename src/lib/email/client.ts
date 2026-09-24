@@ -53,7 +53,7 @@ function toPlainText(html: string) {
 }
 
 /**
- * Sends, and never throws into the request path — a failed notification must
+ * Sends, and never throws into the request path - a failed notification must
  * not turn a valid enquiry into a user-facing error. Failures are logged for
  * the platform while the applicant still sees a success.
  *
@@ -72,7 +72,7 @@ export async function send(options: {
   const apiKey = process.env.BREVO_API_KEY;
 
   if (!apiKey) {
-    console.warn("[email] BREVO_API_KEY missing — skipped:", options.subject);
+    console.warn("[email] BREVO_API_KEY missing, skipped:", options.subject);
     return { ok: false as const };
   }
 

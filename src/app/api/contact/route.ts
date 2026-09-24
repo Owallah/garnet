@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) return validationError(parsed.error);
-  // Honeypot filled — accept silently so bots learn nothing.
+  // Honeypot filled - accept silently so bots learn nothing.
   if (parsed.data.website) return NextResponse.json({ ok: true });
 
   const token = (body as { turnstileToken?: string }).turnstileToken;
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       await send({
         to: mailboxes.contact,
         replyTo: data.email,
-        subject: `Website enquiry — ${data.areaOfInterest} — ${data.fullName}`,
+        subject: `Website enquiry | ${data.areaOfInterest} | ${data.fullName}`,
         html: internalNotification({
           heading: "New contact enquiry",
           intro: "Submitted through the website contact form.",
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
     await send({
       to: data.email,
-      subject: "We have your message — Garnet Solutions",
+      subject: "We have your message | Garnet Solutions",
       toName: data.fullName,
       html: acknowledgement({
         firstName: data.fullName.split(" ")[0],
